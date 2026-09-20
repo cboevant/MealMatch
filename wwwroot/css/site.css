@@ -29,3 +29,900 @@ body {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
 }
+/* ==================================================
+   HEADER
+   ================================================== */
+
+/* Algemene opmaak van de header */
+header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 10px 30px;
+    box-sizing: border-box;
+    background: linear-gradient(to right, #ffffff, #e8d5cc);
+}
+
+    /* Logo in de header */
+    header img {
+        width: 100px;
+    }
+
+/* ==================================================
+   NAVIGATION
+   ================================================== */
+
+/* Navigatielinks horizontaal naast elkaar */
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 75px;
+    margin: 0;
+    padding: 0;
+}
+
+/* Opmaak van de navigatielinks */
+nav a {
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* ==================================================
+   ALGEMENE PAGINA-OPMAAK
+   ================================================== */
+
+/* Achtergrond en algemene tekst van alle pagina's */
+body {
+    text-align: center;
+    background: url("images/Achtergrond_Riet.png");
+    background-size: cover;
+    background-position: center;
+    color: black;
+    font-family: Arial, sans-serif;
+}
+
+/* ==================================================
+   CONTACT PAGE
+   ================================================== */
+
+/* Profielfoto op de contactpagina */
+.contact-page .profile-image {
+    width: 200px;
+    border-radius: 50%;
+}
+
+/* Introductietekst op de contactpagina */
+.contact-page .intro {
+    font-size: 25px;
+}
+
+/* Beschrijving op de contactpagina */
+.contact-page .description {
+    font-size: 15px;
+    text-align: center;
+    font-style: italic;
+    margin: 0 auto 40px auto;
+}
+
+
+/* ==================================================
+   CONTACT - MAIN
+   ================================================== */
+
+/* Linker- en rechterkolom naast elkaar */
+.contact-page main {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 50px;
+    width: 90%;
+    margin: 50px auto;
+}
+
+/* Linkerkolom met contactgegevens */
+.contact-page .left-column {
+    flex: 1;
+}
+
+/* Rechterkolom met contactformulier */
+.contact-page .right-column {
+    flex: 1;
+}
+
+
+/* ==================================================
+   CONTACT - TEKST
+   ================================================== */
+
+/* Kleine titel GET IN TOUCH */
+.contact-page .contact-title {
+    font-size: 15px;
+    text-align: left;
+    margin-bottom: 15px;
+    font-weight: bold;
+    color: #c98f7d;
+    letter-spacing: 3px;
+}
+
+/* Grote titel Let's work together */
+.contact-page .left-column h1 {
+    font-size: 45px;
+    text-align: left;
+    margin: 0 0 25px 0;
+}
+
+/* Beschrijving boven de contactgegevens */
+.contact-page .contact-description {
+    font-size: 15px;
+    line-height: 1.6;
+    text-align: left;
+    margin-bottom: 40px;
+}
+
+/* ==================================================
+   CONTACT - GEGEVENS
+   ================================================== */
+
+/* Email en locatie naast hun icoon */
+.contact-page .mail,
+.contact-page .location {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-align: left;
+}
+
+/* Algemene opmaak van de iconen */
+.contact-page .icon {
+    font-size: 25px;
+    width: 30px;
+    min-width: 40px;
+    text-align: center;
+}
+
+/* LinkedIn icoon en tekst naast elkaar */
+.contact-page .social-img {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-align: left;
+}
+
+/* Formaat van het LinkedIn icoon */
+.contact-page .icon img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+/* Tekst naast de iconen */
+.contact-page .contact-text {
+    text-align: left;
+}
+
+/* LinkedIn tekst */
+.contact-page .social {
+    text-align: left;
+}
+
+/* Email, Location en LinkedIn vetgedrukt */
+.contact-page .information {
+    font-weight: bold;
+}
+
+/* ==================================================
+   CONTACT - FORMULIER
+   ================================================== */
+
+/* Witte achtergrond en vorm van het formulier */
+.contact-page .contact-form {
+    margin-top: 10px;
+    background: white;
+    padding: 40px;
+    width: 100%;
+    border-radius: 15px;
+    text-align: left;
+    box-sizing: border-box;
+}
+
+    /* Velden van het formulier onder elkaar */
+    .contact-page .contact-form form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    /* Opmaak van tekstvelden en textarea */
+    .contact-page .contact-form input,
+    .contact-page .contact-form textarea {
+        padding: 12px;
+        font-family: Georgia, serif;
+        font-size: 15px;
+    }
+
+    /* Hoogte van het berichtenveld */
+    .contact-page .contact-form textarea {
+        height: 150px;
+    }
+
+    /* Knop SEND MESSAGE */
+    .contact-page .contact-form input[type="submit"] {
+        background: #c98f7d;
+        color: white;
+        border: none;
+        cursor: pointer;
+        padding: 15px;
+    }
+
+/* ==================================================
+   ABOUT PAGE
+   ================================================== */
+
+/* Algemene opmaak van de About-pagina */
+.about-page main {
+    width: 90%;
+    margin: 50px auto;
+}
+
+/* Kleine titel ABOUT ME */
+.about-page .about-title {
+    font-size: 15px;
+    font-weight: bold;
+    color: #c98f7d;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+}
+
+/* Hoofdtitel */
+.about-page h1 {
+    font-size: 45px;
+    margin: 0 0 10px 0;
+}
+
+/* Ondertitel */
+.about-page .about-description {
+    font-size: 15px;
+    font-style: italic;
+    margin-bottom: 50px;
+}
+
+/* ==================================================
+   ABOUT - PERSOONLIJKE TEKST
+   ================================================== */
+
+/* Tekst over Christy */
+.about-page .about-text {
+    max-width: 850px;
+    margin: 0 auto 50px auto;
+    padding-left: 25px;
+    border-left: 4px solid #e8d5cc;
+    text-align: left;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+    /* Ruimte tussen de alinea's */
+    .about-page .about-text p {
+        margin: 0 0 20px 0;
+    }
+
+        /* Laatste alinea heeft geen extra ruimte */
+        .about-page .about-text p:last-child {
+            margin-bottom: 0;
+        }
+
+/* ==================================================
+   ABOUT - TWEE KOLOMMEN
+   ================================================== */
+
+/* De twee kolommen naast elkaar */
+.about-page .about-columns {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 50px;
+    width: 100%;
+}
+
+/* Linker- en rechterkolom */
+.about-page .left-column,
+.about-page .right-column {
+    flex: 1;
+    max-width: 500px;
+}
+
+/* ==================================================
+   ABOUT - AFBEELDINGEN
+   ================================================== */
+
+/* Container voor de afbeeldingen */
+.about-page .about-image {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+}
+
+    /* Afbeeldingen vullen de container */
+    .about-page .about-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+/* ==================================================
+   ABOUT - VAARDIGHEDEN
+   ================================================== */
+
+/* Titel HANDMADE en DIGITAL */
+.about-page .handmade-title {
+    font-size: 15px;
+    font-weight: bold;
+    color: #c98f7d;
+    letter-spacing: 3px;
+    text-align: center;
+    margin: 20px 0 15px 0;
+}
+
+/* Vaardigheden onder de afbeeldingen */
+.about-page .skills {
+    text-align: center;
+}
+
+    /* Opmaak van iedere vaardigheid */
+    .about-page .skills p {
+        margin: 5px 0;
+        font-size: 15px;
+    }
+
+/* ==================================================
+   HOMEPAGE
+   ================================================== */
+
+/* Homepage gebruikt een witte achtergrond */
+.home-page {
+    margin: 0;
+    background: white;
+}
+
+    /* Ruimte rond de introductietekst boven de weekplanning */
+    .home-page .hero-text {
+        max-width: 700px;
+        margin: 50px auto 30px auto;
+        padding: 0 20px;
+        text-align: center;
+    }
+
+    /* Kleine titel WEEKPLANNING */
+    .home-page .hero-title {
+        font-size: 13px;
+        font-weight: bold;
+        color: #c98f7d;
+        letter-spacing: 3px;
+        margin-bottom: 15px;
+    }
+
+    /* Grote titel */
+    .home-page .hero-text h1 {
+        font-size: 38px;
+        margin: 0 0 15px 0;
+        color: black;
+    }
+
+    /* Beschrijving onder de titel */
+    .home-page .hero-description {
+        font-size: 15px;
+        line-height: 1.6;
+        color: #555555;
+        margin: 0;
+    }
+
+    /* ==================================================
+   WEEKPLANNING
+   ================================================== */
+
+    /* Witte kaart met de 5 dagen naast elkaar (het belangrijkste onderdeel van de homepage) */
+    .home-page .weekplanning {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        max-width: 1120px;
+        margin: 0 auto 60px auto;
+        padding: 40px;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        box-sizing: border-box;
+    }
+
+    /* Eén kolom per dag */
+    .home-page .day-column {
+        flex: 1;
+        text-align: center;
+    }
+
+    /* Naam van de dag */
+    .home-page .day-name {
+        font-size: 13px;
+        font-weight: bold;
+        color: #c98f7d;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin: 0 0 12px 0;
+    }
+
+    /* Algemene opmaak van een maaltijd-plek, ongeacht of deze leeg of gevuld is */
+    .home-page .meal-slot {
+        border-radius: 10px;
+        padding: 16px;
+        min-height: 70px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+    }
+
+        /* Wanneer er al een maaltijd gepland staat */
+        .home-page .meal-slot.filled {
+            background: #e8d5cc;
+        }
+
+    /* Naam van het geplande recept */
+    .home-page .meal-name {
+        font-weight: bold;
+        color: black;
+        font-size: 14px;
+        margin: 0 0 6px 0;
+    }
+
+    /* Bereidingstijd van het geplande recept */
+    .home-page .meal-time {
+        color: #c98f7d;
+        font-weight: bold;
+        font-size: 12px;
+        margin: 0;
+    }
+
+    /* Wanneer er nog geen maaltijd gepland staat */
+    .home-page .meal-slot.empty {
+        background: white;
+        border: 1.5px dashed #c98f7d;
+        cursor: pointer;
+    }
+
+        /* Tekst "+ Voeg maaltijd toe" */
+        .home-page .meal-slot.empty p {
+            color: #c98f7d;
+            font-weight: bold;
+            font-size: 12px;
+            margin: 0;
+        }
+
+        /* Iets donkerder bij hover, zodat duidelijk is dat het klikbaar is */
+        .home-page .meal-slot.empty:hover {
+            background: #faf3f0;
+        }
+
+/* ==================================================
+   PROJECTS PAGE
+   ================================================== */
+
+/* Algemene opmaak van de Projects-pagina */
+.projects-page main {
+    width: 90%;
+    max-width: 1200px;
+    margin: 50px auto;
+}
+
+/* Kleine titel MY PROJECTS */
+.projects-page .projects-title {
+    font-size: 15px;
+    font-weight: bold;
+    color: #c98f7d;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+}
+
+/* Grote titel */
+.projects-page h1 {
+    font-size: 45px;
+    margin: 0 0 20px 0;
+}
+
+/* Introductietekst */
+.projects-page .projects-description {
+    font-size: 15px;
+    line-height: 1.6;
+    max-width: 700px;
+    margin: 0 auto 50px auto;
+}
+
+/* ==================================================
+   PROJECT SECTIONS
+   ================================================== */
+
+/* Ruimte tussen DIGITAL en HANDMADE */
+.projects-page .project-section {
+    margin-bottom: 70px;
+}
+
+    /* Titel DIGITAL en HANDMADE */
+    .projects-page .project-section h2 {
+        font-size: 15px;
+        font-weight: bold;
+        color: #c98f7d;
+        letter-spacing: 3px;
+        text-align: left;
+        margin-bottom: 20px;
+    }
+
+/* ==================================================
+   PROJECT GRID
+   ================================================== */
+
+/* Projecten naast elkaar */
+.projects-page .project-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+/* ==================================================
+   PROJECT CARD
+   ================================================== */
+
+/* Witte kaart rond ieder project */
+.projects-page .project-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    text-align: left;
+}
+
+    /* ==================================================
+   PROJECT AFBEELDINGEN EN VIDEO'S
+   ================================================== */
+
+    /* Video's bovenaan de projectkaarten */
+    .projects-page .project-card > video {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        display: block;
+    }
+
+
+/* ==================================================
+   PROJECT SLIDESHOW
+   ================================================== */
+
+/* Container van de slideshow */
+.projects-page .slideshow {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+}
+
+    /* Afbeeldingen in de slideshow */
+    .projects-page .slideshow img {
+        display: none;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+        /* Eerste afbeelding standaard zichtbaar */
+        .projects-page .slideshow img:first-child {
+            display: block;
+        }
+
+    /* ==================================================
+   SLIDESHOW - PIJLTJES
+   ================================================== */
+
+    /* Algemene opmaak van de pijltjes */
+    .projects-page .slideshow button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: transparent;
+        border: none;
+        font-size: 28px;
+        cursor: pointer;
+        color: white;
+        text-shadow: 0 1px 4px black;
+    }
+
+    /* Vorige knop */
+    .projects-page .slideshow .prev {
+        left: 15px;
+    }
+
+    /* Volgende knop */
+    .projects-page .slideshow .next {
+        right: 15px;
+    }
+
+/* ==================================================
+   PROJECT - TEKST
+   ================================================== */
+
+/* Tekstgedeelte van de projectkaart */
+.projects-page .project-content {
+    padding: 25px;
+}
+
+/* Projectnummer */
+.projects-page .project-number {
+    color: #c98f7d;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin: 0 0 10px 0;
+}
+
+/* Projecttitel */
+.projects-page .project-content h3 {
+    font-size: 24px;
+    margin: 10px 0 15px 0;
+}
+
+/* Beschrijving van het project */
+.projects-page .project-content > p:not(.project-number):not(.project-skills) {
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Gebruikte technieken */
+.projects-page .project-skills {
+    color: #c98f7d;
+    font-size: 13px;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* ==================================================
+   FOOTER
+   ================================================== */
+
+/* Algemene footer */
+footer {
+    background: transparent;
+    padding: 10px;
+    text-align: center;
+}
+
+    /* Tekst in de footer */
+    footer p {
+        margin: 5px;
+    }
+
+/* ==================================================
+   RESPONSIVE DESIGN - TABLET
+   ================================================== */
+
+@media (max-width: 900px) {
+
+    /* HEADER */
+    header {
+        padding: 10px 20px;
+    }
+
+        header img {
+            width: 80px;
+        }
+
+    nav ul {
+        gap: 35px;
+    }
+
+    nav a {
+        font-size: 16px;
+    }
+
+    /* ABOUT */
+    .about-page .about-columns {
+        gap: 25px;
+    }
+
+    .about-page .about-image {
+        height: 220px;
+    }
+
+    /* CONTACT */
+    .contact-page main {
+        gap: 25px;
+        width: 90%;
+    }
+
+    .contact-page .left-column h1 {
+        font-size: 38px;
+    }
+
+    .contact-page .contact-form {
+        padding: 25px;
+    }
+
+    /* HOMEPAGE */
+    .home-page .hero-text h1 {
+        font-size: 32px;
+    }
+
+    .home-page .weekplanning {
+        gap: 12px;
+        padding: 25px;
+    }
+
+    .home-page .meal-slot {
+        min-height: 60px;
+        padding: 12px;
+    }
+
+
+    /* PROJECTS */
+    .projects-page .project-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ==================================================
+   RESPONSIVE DESIGN - MOBIEL
+   ================================================== */
+
+@media (max-width: 600px) {
+
+    /* HEADER */
+    header {
+        flex-direction: column;
+        padding: 15px;
+        gap: 15px;
+    }
+
+        header img {
+            width: 80px;
+        }
+
+    nav ul {
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    nav a {
+        font-size: 15px;
+    }
+
+
+    /* ALGEMENE PAGINA-OPMAAK */
+    body {
+        font-size: 14px;
+    }
+
+    /* ==================================================
+       ABOUT
+       ================================================== */
+
+    .about-page main {
+        width: 90%;
+        margin: 30px auto;
+    }
+
+    .about-page h1 {
+        font-size: 35px;
+    }
+
+    .about-page .about-description {
+        margin-bottom: 35px;
+    }
+
+    .about-page .about-text {
+        width: 90%;
+        padding-left: 15px;
+        font-size: 14px;
+        box-sizing: border-box;
+    }
+
+    /* Kolommen komen onder elkaar */
+    .about-page .about-columns {
+        flex-direction: column;
+        gap: 40px;
+        align-items: center;
+    }
+
+    .about-page .left-column,
+    .about-page .right-column {
+        width: 100%;
+        max-width: 500px;
+    }
+
+    .about-page .about-image {
+        height: 220px;
+    }
+
+    /* ==================================================
+       CONTACT
+       ================================================== */
+
+    .contact-page main {
+        flex-direction: column;
+        width: 90%;
+        gap: 40px;
+        margin: 30px auto;
+    }
+
+    .contact-page .left-column,
+    .contact-page .right-column {
+        width: 100%;
+    }
+
+        .contact-page .left-column h1 {
+            font-size: 35px;
+        }
+
+    .contact-page .contact-form {
+        padding: 25px;
+    }
+
+    /* ==================================================
+       HOMEPAGE
+       ================================================== */
+
+    .home-page .hero-text h1 {
+        font-size: 26px;
+    }
+
+    /* Dagen komen onder elkaar op mobiel */
+    .home-page .weekplanning {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .home-page .day-column {
+        text-align: left;
+    }
+
+    .home-page .meal-slot {
+        min-height: 50px;
+    }
+
+    /* ==================================================
+       PROJECTS
+       ================================================== */
+
+    .projects-page main {
+        width: 90%;
+        margin: 30px auto;
+    }
+
+    .projects-page h1 {
+        font-size: 35px;
+    }
+
+    .projects-page .projects-description {
+        margin-bottom: 40px;
+    }
+
+    /* Eén project per rij op mobiel */
+    .projects-page .project-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .projects-page .project-section {
+        margin-bottom: 50px;
+    }
+
+    .projects-page .project-card > video,
+    .projects-page .slideshow {
+        height: 250px;
+    }
+
+    .projects-page .project-content {
+        padding: 20px;
+    }
+}

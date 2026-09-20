@@ -4,7 +4,85 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MealMatch - Home</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="home-page">
+
+    <header>
+        <img src="images/logo.png" alt="MealMatch logo">
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="recepten.html">Recepten</a></li>
+                <li><a href="planning.html">Planning</a></li>
+                <li><a href="account.html">Account</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- Korte introductie boven de weekplanning -->
+        <section class="hero-text">
+            <p class="hero-title">WEEKPLANNING</p>
+            <h1>Wat eten we deze week?</h1>
+            <p class="hero-description">Jouw avondmaaltijden voor maandag t/m vrijdag in één overzicht.</p>
+        </section>
+
+        <!-- Weekplanning: het belangrijkste onderdeel van de homepage (US03) -->
+        <section class="weekplanning">
+
+            <div class="day-column">
+                <p class="day-name">Maandag</p>
+                <div class="meal-slot filled">
+                    <p class="meal-name">Pasta Bolognese</p>
+                    <p class="meal-time">30 min</p>
+                </div>
+            </div>
+
+            <div class="day-column">
+                <p class="day-name">Dinsdag</p>
+                <div class="meal-slot empty">
+                    <p>+ Voeg maaltijd toe</p>
+                </div>
+            </div>
+
+            <div class="day-column">
+                <p class="day-name">Woensdag</p>
+                <div class="meal-slot filled">
+                    <p class="meal-name">Groene curry</p>
+                    <p class="meal-time">40 min</p>
+                </div>
+            </div>
+
+            <div class="day-column">
+                <p class="day-name">Donderdag</p>
+                <div class="meal-slot empty">
+                    <p>+ Voeg maaltijd toe</p>
+                </div>
+            </div>
+
+            <div class="day-column">
+                <p class="day-name">Vrijdag</p>
+                <div class="meal-slot filled">
+                    <p class="meal-name">Vistacos</p>
+                    <p class="meal-time">25 min</p>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 MealMatch</p>
+    </footer>
+
+</body>
+</html>
