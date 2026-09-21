@@ -4,7 +4,354 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="logo">
+            MealMatch
+        </div>
+
+        <nav class="navigation">
+
+            <a href="#" class="nav-item active">
+                <span class="nav-icon">□</span>
+                Deze week
+            </a>
+
+            <a href="#" class="nav-item">
+                <span class="nav-icon">▱</span>
+                Recepten
+            </a>
+
+            <a href="#" class="nav-item">
+                <span class="nav-icon">☰</span>
+                Boodschappen
+            </a>
+
+            <a href="#" class="nav-item">
+                <span class="nav-icon">♡</span>
+                Favorieten
+            </a>
+
+        </nav>
+
+        <div class="user">
+            <div class="user-circle">C</div>
+            <span>Mijn MealMatch</span>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <header class="week-header">
+
+            <div>
+                <p class="date-label">Deze week</p>
+
+                <h1>Wat eten we deze week?</h1>
+            </div>
+
+            <div class="week-navigation">
+
+                <button class="arrow-button">
+                    ‹
+                </button>
+
+                <span>21 – 25 september</span>
+
+                <button class="arrow-button">
+                    ›
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- WEEKPLANNING -->
+        <section class="week-planner">
+
+            <!-- MAANDAG -->
+            <div class="day">
+
+                <div class="day-header">
+                    <span>MA</span>
+                    <strong>21</strong>
+                </div>
+
+                <div class="meal-card">
+
+                    <span class="meal-type">
+                        AVOND
+                    </span>
+
+                    <h2>
+                        Kip met<br>
+                        groenten
+                    </h2>
+
+                    <div class="meal-info">
+                        <span>◷ 30 min</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- DINSDAG -->
+            <div class="day">
+
+                <div class="day-header">
+                    <span>DI</span>
+                    <strong>22</strong>
+                </div>
+
+                <div class="meal-card">
+
+                    <span class="meal-type">
+                        AVOND
+                    </span>
+
+                    <h2>
+                        Romige<br>
+                        pasta
+                    </h2>
+
+                    <div class="meal-info">
+                        <span>◷ 25 min</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- WOENSDAG -->
+            <div class="day">
+
+                <div class="day-header">
+                    <span>WO</span>
+                    <strong>23</strong>
+                </div>
+
+                <div class="meal-card">
+
+                    <span class="meal-type">
+                        AVOND
+                    </span>
+
+                    <h2>
+                        Groente<br>
+                        bowl
+                    </h2>
+
+                    <div class="meal-info">
+                        <span>◷ 20 min</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- DONDERDAG -->
+            <div class="day">
+
+                <div class="day-header">
+                    <span>DO</span>
+                    <strong>24</strong>
+                </div>
+
+                <button class="add-meal">
+
+                    <span class="plus">+</span>
+
+                    <span>Maaltijd<br>toevoegen</span>
+
+                </button>
+
+            </div>
+
+
+            <!-- VRIJDAG -->
+            <div class="day">
+
+                <div class="day-header">
+                    <span>VR</span>
+                    <strong>25</strong>
+                </div>
+
+                <button class="add-meal">
+
+                    <span class="plus">+</span>
+
+                    <span>Maaltijd<br>toevoegen</span>
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- PROGRESS -->
+        <section class="progress-card">
+
+            <div class="progress-icon">
+                ✓
+            </div>
+
+            <div class="progress-text">
+
+                <h3>
+                    3 maaltijden gepland, nog 2 te gaan
+                </h3>
+
+                <p>
+                    Je bent goed op weg voor deze week.
+                </p>
+
+            </div>
+
+            <div class="progress">
+
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+
+                <span>3 van 5 dagen</span>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- RIGHT SIDEBAR -->
+    <aside class="right-sidebar">
+
+        <!-- BOODSCHAPPEN -->
+        <section>
+
+            <div class="section-title">
+
+                <h2>Boodschappenlijst</h2>
+
+                <a href="#">
+                    Bekijk alles
+                </a>
+
+            </div>
+
+
+            <div class="shopping-card">
+
+                <h3>GROENTEN</h3>
+
+                <label class="shopping-item">
+                    <input type="checkbox">
+                    <span>Broccoli</span>
+                    <small>1</small>
+                </label>
+
+                <label class="shopping-item">
+                    <input type="checkbox">
+                    <span>Tomaten</span>
+                    <small>4</small>
+                </label>
+
+
+                <h3>VLEES</h3>
+
+                <label class="shopping-item">
+                    <input type="checkbox">
+                    <span>Kipfilet</span>
+                    <small>2</small>
+                </label>
+
+
+                <h3>OVERIG</h3>
+
+                <label class="shopping-item">
+                    <input type="checkbox">
+                    <span>Olijfolie</span>
+                    <small>1</small>
+                </label>
+
+            </div>
+
+        </section>
+
+
+        <!-- SNEL TOEVOEGEN -->
+        <section class="quick-add">
+
+            <div class="section-title">
+
+                <h2>Snel toevoegen</h2>
+
+                <a href="#">
+                    Recepten
+                </a>
+
+            </div>
+
+
+            <div class="quick-meal">
+
+                <div class="meal-image">
+                    🍝
+                </div>
+
+                <div>
+                    <strong>Pasta pesto</strong>
+                    <small>25 min</small>
+                </div>
+
+            </div>
+
+
+            <div class="quick-meal">
+
+                <div class="meal-image">
+                    🥗
+                </div>
+
+                <div>
+                    <strong>Groente bowl</strong>
+                    <small>20 min</small>
+                </div>
+
+            </div>
+
+
+            <div class="quick-meal">
+
+                <div class="meal-image">
+                    🍲
+                </div>
+
+                <div>
+                    <strong>Soep met groenten</strong>
+                    <small>30 min</small>
+                </div>
+
+            </div>
+
+
+            <button class="find-recipe">
+                🔍 &nbsp; Zoek een recept
+            </button>
+
+        </section>
+
+    </aside>
+
 </div>
