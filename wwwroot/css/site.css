@@ -1,40 +1,21 @@
+/* =========================================
+   ALGEMEEN
+   ========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
 html {
     font-size: 14px;
+    position: relative;
+    min-height: 100%;
 }
 
 @media (min-width: 768px) {
     html {
         font-size: 16px;
     }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-    position: relative;
-    min-height: 100%;
-}
-
-body {
-    margin-bottom: 60px;
-}
-
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-    color: var(--bs-secondary-color);
-    text-align: end;
-}
-
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-    text-align: start;
-}
-/* =========================================
-   MEALMATCH
-   ========================================= */
-
-* {
-    box-sizing: border-box;
 }
 
 body {
@@ -46,7 +27,7 @@ body {
 
 
 /* =========================================
-   APP LAYOUT
+   LAYOUT
    ========================================= */
 
 .app {
@@ -57,7 +38,7 @@ body {
 
 
 /* =========================================
-   LEFT SIDEBAR
+   LINKER SIDEBAR - _Layout.cshtml
    ========================================= */
 
 .sidebar {
@@ -128,7 +109,7 @@ body {
 
 
 /* =========================================
-   MAIN CONTENT
+   INDEX.CSHTML - MAIN CONTENT
    ========================================= */
 
 .main-content {
@@ -183,7 +164,7 @@ h1 {
 
 
 /* =========================================
-   WEEK PLANNER
+   WEEKPLANNING
    ========================================= */
 
 .week-planner {
@@ -216,7 +197,7 @@ h1 {
 
 
 /* =========================================
-   MEAL CARD
+   MAALTIJD KAART
    ========================================= */
 
 .meal-card {
@@ -252,7 +233,7 @@ h1 {
 
 
 /* =========================================
-   ADD MEAL
+   MAALTIJD TOEVOEGEN
    ========================================= */
 
 .add-meal {
@@ -286,7 +267,7 @@ h1 {
 
 
 /* =========================================
-   PROGRESS CARD
+   VOORTGANG
    ========================================= */
 
 .progress-card {
@@ -354,7 +335,7 @@ h1 {
 
 
 /* =========================================
-   RIGHT SIDEBAR
+   RECHTER SIDEBAR - INDEX
    ========================================= */
 
 .right-sidebar {
@@ -384,7 +365,7 @@ h1 {
 
 
 /* =========================================
-   SHOPPING LIST
+   BOODSCHAPPENLIJST
    ========================================= */
 
 .shopping-card {
@@ -433,7 +414,7 @@ h1 {
 
 
 /* =========================================
-   QUICK ADD
+   SNEL TOEVOEGEN
    ========================================= */
 
 .quick-add {
@@ -498,7 +479,107 @@ h1 {
 
 
 /* =========================================
-   RESPONSIVE
+   RECEPTENPAGINA
+   ========================================= */
+
+.recepten-pagina {
+    padding: 48px 42px;
+    max-width: 1000px;
+    width: 100%;
+}
+
+.recepten-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 32px;
+}
+
+.kleine-titel {
+    color: #a69a91;
+    font-size: 14px;
+    margin: 0 0 8px 0;
+}
+
+.recepten-header h1 {
+    margin: 0;
+    font-size: 36px;
+    font-weight: 600;
+}
+
+.recepten-header p:last-child {
+    margin-top: 8px;
+    color: #8d8178;
+    font-size: 15px;
+}
+
+.btn-toevoegen {
+    border: 1px solid #e6d9d0;
+    background-color: #f4e8df;
+    color: #b75f45;
+    border-radius: 8px;
+    padding: 12px 18px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+    .btn-toevoegen:hover {
+        background-color: #ecddd2;
+    }
+
+
+/* =========================================
+   RECEPTENLIJST
+   ========================================= */
+
+.recepten-lijst {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.recept-kaart {
+    background-color: #fffdfb;
+    border: 1px solid #e7ddd6;
+    border-radius: 12px;
+    padding: 22px;
+    min-height: 170px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 2px 8px rgba(80, 60, 50, 0.04);
+}
+
+    .recept-kaart h2 {
+        margin: 0;
+        font-size: 22px;
+        font-weight: 500;
+    }
+
+    .recept-kaart p {
+        color: #8d8178;
+        font-size: 14px;
+        margin: 10px 0 18px 0;
+    }
+
+    .recept-kaart button {
+        align-self: flex-start;
+        border: 1px solid #e6d9d0;
+        background-color: transparent;
+        color: #a85e49;
+        border-radius: 6px;
+        padding: 7px 12px;
+        font-size: 13px;
+        cursor: pointer;
+    }
+
+        .recept-kaart button:hover {
+            background-color: #f7eee9;
+        }
+
+
+/* =========================================
+   RESPONSIVE INDEX
    ========================================= */
 
 @media (max-width: 1000px) {
@@ -517,6 +598,17 @@ h1 {
     }
 }
 
+
+/* =========================================
+   RESPONSIVE RECEPTEN
+   ========================================= */
+
+@media (max-width: 900px) {
+
+    .recepten-lijst {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
 
 @media (max-width: 700px) {
 
@@ -551,5 +643,22 @@ h1 {
 
     .week-planner {
         grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .recepten-pagina {
+        padding: 30px 20px;
+    }
+
+    .recepten-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .recepten-lijst {
+        grid-template-columns: 1fr;
     }
 }
