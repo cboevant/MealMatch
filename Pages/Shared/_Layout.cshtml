@@ -14,11 +14,44 @@
 
 <body>
 
-    <!--
-        De inhoud van iedere pagina komt hier.
-        Voor Index.cshtml betekent dit:
-        jouw volledige MealMatch-homepage.
-    -->
+    <div class="app">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <div class="logo">
+                MealMatch
+            </div>
+
+            <nav class="navigation">
+
+                <a href="/" class="nav-item active">
+                    <span class="nav-icon">□</span>
+                    Deze week
+                </a>
+
+                <a href="/Recepten" class="nav-item">
+                    <span class="nav-icon">▱</span>
+                    Recepten
+                </a>
+
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">☰</span>
+                    Boodschappen
+                </a>
+
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">♡</span>
+                    Favorieten
+                </a>
+
+            </nav>
+
+            <div class="user">
+                <div class="user-circle">C</div>
+                <span>Mijn MealMatch</span>
+            </div>
+
+        </aside>
 
     <main role="main">
         @RenderBody()
