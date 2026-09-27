@@ -1,21 +1,40 @@
-/* =========================================
-   ALGEMEEN
-   ========================================= */
-
-* {
-    box-sizing: border-box;
-}
-
 html {
     font-size: 14px;
-    position: relative;
-    min-height: 100%;
 }
 
 @media (min-width: 768px) {
     html {
         font-size: 16px;
     }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
+    color: var(--bs-secondary-color);
+    text-align: end;
+}
+
+.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
+    text-align: start;
+}
+/* =========================================
+   MEALMATCH
+   ========================================= */
+
+* {
+    box-sizing: border-box;
 }
 
 body {
@@ -27,7 +46,7 @@ body {
 
 
 /* =========================================
-   LAYOUT
+   APP LAYOUT
    ========================================= */
 
 .app {
@@ -38,7 +57,7 @@ body {
 
 
 /* =========================================
-   LINKER SIDEBAR - _Layout.cshtml
+   LEFT SIDEBAR
    ========================================= */
 
 .sidebar {
@@ -109,7 +128,7 @@ body {
 
 
 /* =========================================
-   INDEX.CSHTML - MAIN CONTENT
+   MAIN CONTENT
    ========================================= */
 
 .main-content {
@@ -164,7 +183,7 @@ h1 {
 
 
 /* =========================================
-   WEEKPLANNING
+   WEEK PLANNER
    ========================================= */
 
 .week-planner {
@@ -197,7 +216,7 @@ h1 {
 
 
 /* =========================================
-   MAALTIJD KAART
+   MEAL CARD
    ========================================= */
 
 .meal-card {
@@ -233,7 +252,7 @@ h1 {
 
 
 /* =========================================
-   MAALTIJD TOEVOEGEN
+   ADD MEAL
    ========================================= */
 
 .add-meal {
@@ -267,7 +286,7 @@ h1 {
 
 
 /* =========================================
-   VOORTGANG
+   PROGRESS CARD
    ========================================= */
 
 .progress-card {
@@ -335,7 +354,7 @@ h1 {
 
 
 /* =========================================
-   RECHTER SIDEBAR - INDEX
+   RIGHT SIDEBAR
    ========================================= */
 
 .right-sidebar {
@@ -365,7 +384,7 @@ h1 {
 
 
 /* =========================================
-   BOODSCHAPPENLIJST
+   SHOPPING LIST
    ========================================= */
 
 .shopping-card {
@@ -414,7 +433,7 @@ h1 {
 
 
 /* =========================================
-   SNEL TOEVOEGEN
+   QUICK ADD
    ========================================= */
 
 .quick-add {
@@ -479,8 +498,64 @@ h1 {
 
 
 /* =========================================
-   RECEPTENPAGINA
+   RESPONSIVE
    ========================================= */
+
+@media (max-width: 1000px) {
+
+    .app {
+        grid-template-columns: 160px 1fr;
+    }
+
+    .right-sidebar {
+        display: none;
+    }
+
+    .week-planner {
+        grid-template-columns: repeat(3, 1fr);
+        row-gap: 20px;
+    }
+}
+
+
+@media (max-width: 700px) {
+
+    .app {
+        display: block;
+    }
+
+    .sidebar {
+        padding: 15px 20px;
+    }
+
+    .navigation {
+        flex-direction: row;
+        overflow-x: auto;
+    }
+
+    .user {
+        display: none;
+    }
+
+    .main-content {
+        padding: 25px 20px;
+    }
+
+    .week-header {
+        display: block;
+    }
+
+    .week-navigation {
+        margin-top: 20px;
+    }
+
+    .week-planner {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+/* =========================
+   RECEPTENPAGINA
+   ========================= */
 
 .recepten-pagina {
     padding: 48px 42px;
@@ -528,9 +603,9 @@ h1 {
     }
 
 
-/* =========================================
+/* =========================
    RECEPTENLIJST
-   ========================================= */
+   ========================= */
 
 .recepten-lijst {
     display: grid;
@@ -578,71 +653,14 @@ h1 {
         }
 
 
-/* =========================================
-   RESPONSIVE INDEX
-   ========================================= */
-
-@media (max-width: 1000px) {
-
-    .app {
-        grid-template-columns: 160px 1fr;
-    }
-
-    .right-sidebar {
-        display: none;
-    }
-
-    .week-planner {
-        grid-template-columns: repeat(3, 1fr);
-        row-gap: 20px;
-    }
-}
-
-
-/* =========================================
-   RESPONSIVE RECEPTEN
-   ========================================= */
+/* =========================
+   RESPONSIVE
+   ========================= */
 
 @media (max-width: 900px) {
 
     .recepten-lijst {
         grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 700px) {
-
-    .app {
-        display: block;
-    }
-
-    .sidebar {
-        padding: 15px 20px;
-    }
-
-    .navigation {
-        flex-direction: row;
-        overflow-x: auto;
-    }
-
-    .user {
-        display: none;
-    }
-
-    .main-content {
-        padding: 25px 20px;
-    }
-
-    .week-header {
-        display: block;
-    }
-
-    .week-navigation {
-        margin-top: 20px;
-    }
-
-    .week-planner {
-        grid-template-columns: 1fr 1fr;
     }
 }
 
@@ -660,5 +678,376 @@ h1 {
 
     .recepten-lijst {
         grid-template-columns: 1fr;
+    }
+}
+/* =========================
+   RECEPT TOEVOEGEN
+   ========================= */
+
+.recept-toevoegen-pagina {
+    padding: 48px 42px;
+    max-width: 900px;
+    width: 100%;
+}
+
+.recept-toevoegen-header {
+    margin-bottom: 32px;
+}
+
+    .recept-toevoegen-header h1 {
+        margin: 0;
+        font-size: 36px;
+        font-weight: 600;
+    }
+
+    .recept-toevoegen-header p:last-child {
+        margin-top: 8px;
+        color: #8d8178;
+        font-size: 15px;
+    }
+
+
+/* =========================
+   FORMULIER
+   ========================= */
+
+.recept-formulier {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+/* =========================
+   FOTO
+   ========================= */
+
+.recept-foto {
+    background-color: #fffdfb;
+    border: 1px solid #e7ddd6;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 2px 8px rgba(80, 60, 50, 0.04);
+}
+
+
+/* Titel van de foto-sectie */
+
+.foto-titel {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+}
+
+    .foto-titel i {
+        color: #b75f45;
+        font-size: 20px;
+        width: 22px;
+        text-align: center;
+    }
+
+    .foto-titel h2 {
+        margin: 0;
+        font-size: 21px;
+        font-weight: 500;
+    }
+
+
+/* Upload gedeelte */
+
+.foto-upload {
+    min-height: 150px;
+    border: 1px dashed #d8c2b5;
+    border-radius: 10px;
+    background-color: #f4e8df;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+
+/* Plus */
+
+.foto-icoon {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background-color: #fffdfb;
+    color: #b75f45;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    margin-bottom: 10px;
+}
+
+
+/* Tekst */
+
+.foto-upload p {
+    color: #8d8178;
+    font-size: 14px;
+    margin: 0 0 14px;
+}
+
+
+/* Knop */
+
+.btn-foto {
+    border: 1px solid #e6d9d0;
+    background-color: #fffdfb;
+    color: #a85e49;
+    border-radius: 7px;
+    padding: 9px 15px;
+    cursor: pointer;
+}
+
+
+/* =========================
+   FORMULIER SECTIES
+   ========================= */
+
+.formulier-sectie {
+    background-color: #fffdfb;
+    border: 1px solid #e7ddd6;
+    border-radius: 12px;
+    padding: 0;
+    box-shadow: 0 2px 8px rgba(80, 60, 50, 0.04);
+}
+
+
+    /* Titel + icoon + pijl */
+
+    .formulier-sectie summary {
+        list-style: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 24px;
+    }
+
+        .formulier-sectie summary::-webkit-details-marker {
+            display: none;
+        }
+
+
+/* Icoon en titel bij elkaar */
+
+.sectie-titel {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+
+    /* Bootstrap icon */
+
+    .sectie-titel i {
+        color: #b75f45;
+        font-size: 20px;
+        width: 22px;
+        text-align: center;
+    }
+
+
+/* Titel */
+
+.formulier-sectie summary h2 {
+    margin: 0;
+    font-size: 21px;
+    font-weight: 500;
+}
+
+
+/* Pijl */
+
+.pijl {
+    color: #a85e49;
+    font-size: 22px;
+    line-height: 1;
+    transition: transform 0.2s ease;
+}
+
+
+/* Pijl draait wanneer de sectie geopend is */
+
+.formulier-sectie[open] .pijl {
+    transform: rotate(180deg);
+}
+
+
+/* Ruimte rondom de inhoud */
+
+.formulier-sectie > .formulier-veld,
+.formulier-sectie > .formulier-rij,
+.formulier-sectie > .ingredient-rij,
+.formulier-sectie > .btn-ingredient {
+    margin-left: 24px;
+    margin-right: 24px;
+}
+
+    .formulier-sectie > .formulier-veld:last-child {
+        margin-bottom: 24px;
+    }
+
+.formulier-sectie > .ingredient-rij {
+    margin-bottom: 14px;
+}
+
+.formulier-sectie > .btn-ingredient {
+    margin-bottom: 24px;
+}
+
+
+/* =========================
+   VELDEN
+   ========================= */
+
+.formulier-veld {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-bottom: 18px;
+}
+
+    .formulier-veld:last-child {
+        margin-bottom: 0;
+    }
+
+    .formulier-veld label {
+        color: #665b54;
+        font-size: 14px;
+    }
+
+    .formulier-veld input,
+    .formulier-veld textarea,
+    .ingredient-rij input {
+        border: 1px solid #e2d6ce;
+        background-color: #fffdfb;
+        border-radius: 7px;
+        padding: 8px 12px;
+        font-family: inherit;
+        font-size: 14px;
+        color: #4f4742;
+    }
+
+        .formulier-veld input:focus,
+        .formulier-veld textarea:focus,
+        .ingredient-rij input:focus {
+            outline: none;
+            border-color: #b75f45;
+        }
+
+
+/* =========================
+   TWEE VELDEN NAAST ELKAAR
+   ========================= */
+
+.formulier-rij {
+    display: grid;
+    grid-template-columns: 300px 300px;
+    gap: 40px;
+}
+
+/* =========================
+   INGREDIËNTEN
+   ========================= */
+.ingredient-rij {
+    display: grid;
+    grid-template-columns: 2fr 1fr auto;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.btn-ingredient {
+    border: 1px solid #e6d9d0;
+    background-color: #f4e8df;
+    color: #b75f45;
+    border-radius: 7px;
+    padding: 9px 14px;
+    cursor: pointer;
+}
+
+.btn-verwijder {
+    border: 1px solid #e6d9d0;
+    background-color: transparent;
+    color: #a85e49;
+    border-radius: 7px;
+    padding: 9px 12px;
+    cursor: pointer;
+}
+
+.sectie-titel i {
+    display: inline-block;
+    color: #b75f45;
+    font-size: 18px;
+    width: 22px;
+    text-align: center;
+}
+
+
+/* =========================
+   ACTIEKNOPPEN
+   ========================= */
+
+.formulier-acties {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 4px;
+}
+
+.btn-annuleren,
+.btn-opslaan {
+    border-radius: 7px;
+    padding: 11px 18px;
+    font-size: 14px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn-annuleren {
+    border: 1px solid #e2d6ce;
+    background-color: transparent;
+    color: #8d8178;
+}
+
+.btn-opslaan {
+    border: 1px solid #b75f45;
+    background-color: #b75f45;
+    color: white;
+}
+
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+@media (max-width: 600px) {
+
+    .recept-toevoegen-pagina {
+        padding: 30px 20px;
+    }
+
+    .formulier-rij {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .ingredient-rij {
+        grid-template-columns: 1fr;
+    }
+
+    .formulier-acties {
+        flex-direction: column-reverse;
+    }
+
+    .btn-annuleren,
+    .btn-opslaan {
+        text-align: center;
     }
 }
