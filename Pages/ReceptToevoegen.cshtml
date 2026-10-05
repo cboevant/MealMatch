@@ -1,0 +1,212 @@
+﻿@page
+@model MealMatch.Pages.ReceptToevoegenModel
+@{
+    ViewData["Title"] = "Recept toevoegen";
+}
+
+<div class="recept-toevoegen-pagina">
+
+    <div class="recept-toevoegen-header">
+        <div>
+            <p class="kleine-titel">Mijn recepten</p>
+            <h1>Nieuw recept toevoegen</h1>
+            <p>Voeg een nieuw recept toe aan je recepten.</p>
+        </div>
+    </div>
+
+    <form method="post" class="recept-formulier">
+        <div asp-validation-summary="All" class="text-danger"></div>
+
+        <!-- Foto -->
+        <div class="recept-foto">
+
+            <div class="foto-titel">
+                <i class="bi bi-image"></i>
+                <h2>Foto</h2>
+            </div>
+
+            <div class="foto-upload">
+
+                <div class="foto-icoon">+</div>
+
+                <p>Voeg een foto van je gerecht toe.</p>
+
+                <button type="button" class="btn-foto">
+                    Foto kiezen
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- Basisinformatie -->
+        <details class="formulier-sectie" open>
+
+            <summary>
+
+                <div class="sectie-titel">
+                    <i class="bi bi-file-earmark-text"></i>
+                    <h2>Basisinformatie</h2>
+                </div>
+
+                <span class="pijl">⌄</span>
+
+            </summary>
+
+            <div class="formulier-veld">
+                <label asp-for="Recept.Naam">Naam van het recept</label>
+
+                <input asp-for="Recept.Naam"
+                       type="text"
+                       placeholder="Bijvoorbeeld: Pasta pesto">
+            </div>
+
+            <div class="formulier-rij">
+
+                <div class="formulier-veld">
+                    <label asp-for="Recept.BereidingstijdMinuten">Bereidingstijd in minuten</label>
+
+                    <input asp-for="Recept.BereidingstijdMinuten"
+                           type="number"
+                           min="1"
+                           placeholder="30">
+
+                    <small>Vul de bereidingstijd in minuten in.</small>
+                </div>
+
+                <div class="formulier-veld">
+                    <label asp-for="Recept.Personen">Aantal personen</label>
+
+                    <input asp-for="Recept.Personen"
+                           type="number"
+                           placeholder="2">
+                </div>
+
+            </div>
+
+        </details>
+
+
+        <!-- Ingrediënten -->
+        <details class="formulier-sectie">
+
+            <summary>
+
+                <div class="sectie-titel">
+                    <i class="bi bi-leaf-fill"></i>
+                    <h2>Ingrediënten</h2>
+                </div>
+
+                <span class="pijl">⌄</span>
+
+            </summary>
+
+            <div id="ingredienten-container">
+
+                @for (int i = 0; i < Model.Ingredienten.Count; i++)
+                {
+                    <div class="ingredient-rij">
+
+                        <input asp-for="Ingredienten[i].Naam"
+                               type="text"
+                               placeholder="Bijvoorbeeld: kipfilet">
+
+                        <input asp-for="Ingredienten[i].Hoeveelheid"
+                               type="text"
+                               placeholder="Hoeveelheid">
+
+                        <button type="button" class="btn-verwijder">
+                            Verwijderen
+                        </button>
+
+                    </div>
+                }
+
+            </div>
+
+            <button type="button" id="btn-ingredient" class="btn-ingredient">
+                + Ingrediënt toevoegen
+            </button>
+
+        </details>
+
+
+        <!-- Bereidingswijze -->
+        <details class="formulier-sectie">
+
+            <summary>
+
+                <div class="sectie-titel">
+                    <i class="bi bi-list-task"></i>
+                    <h2>Bereidingswijze</h2>
+                </div>
+
+                <span class="pijl">⌄</span>
+
+            </summary>
+
+            <div class="formulier-veld">
+
+                <label asp-for="Recept.Bereidingswijze">
+                    Bereidingswijze
+                </label>
+
+                <textarea asp-for="Recept.Bereidingswijze"
+                          rows="6"
+                          placeholder="Beschrijf hier stap voor stap hoe je het gerecht maakt."></textarea>
+
+            </div>
+
+        </details>
+
+
+        <!-- Extra informatie -->
+        <details class="formulier-sectie">
+
+            <summary>
+
+                <div class="sectie-titel">
+                    <i class="bi bi-info-circle"></i>
+                    <h2>Extra informatie</h2>
+                </div>
+
+                <span class="pijl">⌄</span>
+
+            </summary>
+
+            <div class="formulier-veld">
+
+                <label asp-for="Recept.Opmerking">
+                    Opmerking
+                </label>
+
+                <textarea asp-for="Recept.Opmerking"
+                          rows="4"
+                          placeholder="Bijvoorbeeld: geschikt voor mealprep"></textarea>
+
+            </div>
+
+        </details>
+
+
+        <!-- Acties -->
+        <div class="formulier-acties">
+
+            <a href="/Recepten" class="btn-annuleren">
+                Annuleren
+            </a>
+
+            <button type="submit" class="btn-opslaan">
+                Recept opslaan
+            </button>
+
+        </div>
+
+    </form>
+
+</div>
+
+@section Scripts {
+    <script src="~/js/ReceptToevoegen.js" asp-append-version="true"></script>
+}
