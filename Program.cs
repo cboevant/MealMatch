@@ -1,15 +1,29 @@
-var builder = WebApplication.CreateBuilder(args);
+using MealMatch.Data;
+using MealMatch.Model_Services;
+using Microsoft.EntityFrameworkCore;
 
-// Add services to the container.
+// De builder gebruik je om de applicatie in te stellen
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+
+// Razor Pages aanzetten
 builder.Services.AddRazorPages();
 
-var app = builder.Build();
+// Verbinding met SQL Server (de connection string staat in appsettings.json)
+builder.Services.AddDbContext<MealMatchDbContext>(options =>
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("MealMatchConnection")
+    ));
 
-// Configure the HTTP request pipeline.
+// Service voor het opslaan en ophalen van recepten
+builder.Services.AddScoped<ReceptService>();
+
+// Na deze regel kun je geen services meer toevoegen
+WebApplication app = builder.Build();
+
+// Foutpagina en beveiliging voor als de website online staat
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
@@ -23,4 +37,5 @@ app.MapStaticAssets();
 app.MapRazorPages()
    .WithStaticAssets();
 
+// Start de website
 app.Run();
