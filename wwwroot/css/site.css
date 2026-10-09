@@ -944,23 +944,27 @@ h1 {
 
 
 /* =========================
-   TWEE VELDEN NAAST ELKAAR
+   TWEE VELDEN NAAST ELKAAR BASISINFORMATIE
    ========================= */
 
 .formulier-rij {
     display: grid;
-    grid-template-columns: 300px 300px;
-    gap: 40px;
+    grid-template-columns: 340px 350px;
+    gap: 35px;
+    margin-left: 24px;
+    margin-right: 24px;
 }
 
 /* =========================
    INGREDIËNTEN
    ========================= */
-.ingredient-rij {
+.ingredient-rij { /* DRIE VELDEN NAAST ELKAAR INGREDIENT*/
     display: grid;
-    grid-template-columns: 2fr 1fr auto;
-    gap: 10px;
+    grid-template-columns: 350px 150px 150px;
+    gap: 30px;
     margin-bottom: 14px;
+    margin-right: 24px;
+    margin-left: 24px;
 }
 
 .btn-ingredient {
@@ -970,6 +974,7 @@ h1 {
     border-radius: 7px;
     padding: 9px 14px;
     cursor: pointer;
+    margin-left: 24px;
 }
 
 .btn-verwijder {
