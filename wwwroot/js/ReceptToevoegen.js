@@ -9,11 +9,11 @@ toevoegenKnop.addEventListener("click", function() {
     rij.className = "ingredient-rij";
 
     rij.innerHTML = `
-        <input name="Ingredienten[${ingredientIndex}].Naam"
+        <input name="ReceptIngredienten[${ingredientIndex}].Ingredient.Naam"
                type="text"
                placeholder="Bijvoorbeeld: kipfilet">
 
-        <input name="Ingredienten[${ingredientIndex}].Hoeveelheid"
+        <input name="ReceptIngredienten[${ingredientIndex}].Hoeveelheid"
                type="text"
                placeholder="Hoeveelheid">
 
@@ -39,8 +39,8 @@ container.addEventListener("click", function(event) {
 
             const inputs = rij.querySelectorAll("input");
 
-            inputs[0].name = `Ingredienten[${index}].Naam`;
-            inputs[1].name = `Ingredienten[${index}].Hoeveelheid`;
+            inputs[0].name = `ReceptIngredienten[${index}].Ingredient.Naam`;
+            inputs[1].name = `ReceptIngredienten[${index}].Hoeveelheid`;
         });
 
         ingredientIndex = rijen.length;
