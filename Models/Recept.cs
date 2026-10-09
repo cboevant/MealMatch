@@ -14,7 +14,7 @@ namespace MealMatch.Models
 
         public int Personen { get; set; }
 
-        public List<Ingredient> Ingredienten { get; set; } = new();
+        public List<ReceptIngredient> ReceptIngredienten { get; set; } = new();
 
         [Required(ErrorMessage = "Vul de bereidingswijze in.")]
         public string Bereidingswijze { get; set; } = "";

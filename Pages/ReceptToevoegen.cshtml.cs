@@ -19,18 +19,18 @@ namespace MealMatch.Pages
         public Recept Recept { get; set; } = new Recept();
 
         [BindProperty]
-        public List<Ingredient> Ingredienten { get; set; } = new();
+        public List<ReceptIngredient> ReceptIngredienten { get; set; } = new();
 
         public void OnGet()
         {
             // Begin met één lege ingrediëntrij
-            Ingredienten.Add(new Ingredient());
+            ReceptIngredienten.Add(new ReceptIngredient());
         }
 
         public IActionResult OnPost()
         {
             // Extra controle die niet met een attribuut kan: minimaal één ingrediënt
-            if (Ingredienten.Count == 0)
+            if (ReceptIngredienten.Count == 0)
             {
                 ModelState.AddModelError("Ingredienten", "Voeg minimaal één ingrediënt toe.");
             }
@@ -41,7 +41,7 @@ namespace MealMatch.Pages
             }
 
             // De lijst met ingrediënten koppelen aan het recept
-            Recept.Ingredienten = Ingredienten;
+            Recept.ReceptIngredienten = ReceptIngredienten;
 
             // Opslaan in SQL Server
             _receptService.VoegReceptToe(Recept);
