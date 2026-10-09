@@ -24,6 +24,12 @@
                 <h2>@recept.Naam</h2>
                 <p>@recept.BereidingstijdMinuten min</p>
                 <p>Voor @recept.Personen personen</p>
+                <form method="post"
+                        asp-page-handler="Verwijder"
+                        asp-route-id="@recept.Id"
+                        onsubmit="return confirm('Weet je zeker dat je dit recept wilt verwijderen?');">
+                      <button type="submit">Verwijderen</button>
+                </form>
             </div>
         }
 

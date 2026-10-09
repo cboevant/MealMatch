@@ -45,5 +45,16 @@ namespace MealMatch.Model_Services
                     .ThenInclude(ri => ri.Ingredient)
                 .ToList();
         }
+
+        public void VerwijderRecept(int id)
+        {
+            Recept? recept = _context.Recepten.Find(id);
+
+            if (recept != null)
+            {
+                _context.Recepten.Remove(recept);
+                _context.SaveChanges();
+            }
+        }
     }
 }

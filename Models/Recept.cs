@@ -12,6 +12,7 @@ namespace MealMatch.Models
         [Range(1, 600, ErrorMessage = "De bereidingstijd moet tussen 1 en 600 minuten zijn.")]
         public int BereidingstijdMinuten { get; set; }
 
+        [Range(1, 20, ErrorMessage = "Het aantal personen moet tussen 1 en 20 zijn.")]
         public int Personen { get; set; }
 
         public List<ReceptIngredient> ReceptIngredienten { get; set; } = new();
