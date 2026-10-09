@@ -1,5 +1,6 @@
 using MealMatch.Model_Services;
 using MealMatch.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace MealMatch.Pages
@@ -18,6 +19,11 @@ namespace MealMatch.Pages
         public void OnGet()
         {
             Recepten = _receptService.HaalReceptenOp();
+        }
+        public IActionResult OnPostVerwijder(int id)
+        {
+            _receptService.VerwijderRecept(id);
+            return RedirectToPage();
         }
     }
 }
