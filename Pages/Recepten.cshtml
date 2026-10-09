@@ -18,39 +18,13 @@
         </a>
     </div>
 
-    <div class="recepten-lijst">
-
-        <div class="recept-kaart">
-            <h2>Kip met groenten</h2>
-
-            <p>25 min</p>
-
-            <p>Voor 2 personen</p>
-
-            <button type="button">Verwijderen</button>
-        </div>
-
-        <div class="recept-kaart">
-            <h2>Zalm met broccoli</h2>
-
-            <p>30 min</p>
-
-            <p>Voor 2 personen</p>
-
-            <button type="button">Verwijderen</button>
-        </div>
-
-        <div class="recept-kaart">
-            <h2>Omelet met kaas</h2>
-
-            <p>15 min</p>
-
-            <p>Voor 1 persoon</p>
-
-            <button type="button">Verwijderen</button>
-        </div>
-
-    </div>
+    @foreach (MealMatch.Models.Recept recept in Model.Recepten)
+        {
+            <div class="recept-kaart">
+                <h2>@recept.Naam</h2>
+                <p>@recept.BereidingstijdMinuten min</p>
+                <p>Voor @recept.Personen personen</p>
+            </div>
+        }
 
 </div>
-```
