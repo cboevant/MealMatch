@@ -21,5 +21,7 @@ namespace MealMatch.Models
         public string Bereidingswijze { get; set; } = "";
 
         public string? Opmerking { get; set; } = "";
+
+        public string? FotoPad { get; set; }
     }
 }

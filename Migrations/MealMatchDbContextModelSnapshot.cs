@@ -53,6 +53,9 @@ namespace MealMatch.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("FotoPad")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Naam")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");

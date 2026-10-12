@@ -13,7 +13,6 @@ namespace MealMatch.Pages
         {
             _receptService = receptService;
         }
-
         public List<Recept> Recepten { get; set; } = new();
 
         [BindProperty(SupportsGet = true)]

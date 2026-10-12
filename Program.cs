@@ -17,6 +17,8 @@ builder.Services.AddDbContext<MealMatchDbContext>(options =>
 // Service voor het opslaan en ophalen van recepten
 builder.Services.AddScoped<ReceptService>();
 
+builder.Services.AddScoped<FotoService>();
+
 // Na deze regel kun je geen services meer toevoegen
 WebApplication app = builder.Build();
 
