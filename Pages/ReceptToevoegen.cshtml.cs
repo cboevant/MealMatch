@@ -24,10 +24,31 @@ namespace MealMatch.Pages
         public List<ReceptIngredient> ReceptIngredienten { get; set; } = new();
         [BindProperty]
         public IFormFile? Foto { get; set; }
-        public void OnGet()
+        public IActionResult OnGet(int? id)
         {
-            // Begin met één lege ingrediëntrij
-            ReceptIngredienten.Add(new ReceptIngredient());
+            // Geen id: een nieuw recept
+            if (id == null)
+            {
+                ReceptIngredienten.Add(new ReceptIngredient());
+                return Page();
+            }
+
+            // Wel een id: een bestaand recept bewerken
+            Recept? bestaand = _receptService.HaalReceptOp(id.Value);
+
+            if (bestaand == null)
+            {
+                return RedirectToPage("/Recepten");
+            }
+
+            Recept = bestaand;
+            ReceptIngredienten = bestaand.ReceptIngredienten;
+
+            if (ReceptIngredienten.Count == 0)
+            {
+                ReceptIngredienten.Add(new ReceptIngredient());
+            }
+            return Page();
         }
 
         public IActionResult OnPost()
@@ -60,14 +81,18 @@ namespace MealMatch.Pages
             {
                 Recept.FotoPad = _fotoService.SlaFotoOp(Foto);
             }
-
             // De lijst met ingrediënten koppelen aan het recept
             Recept.ReceptIngredienten = ReceptIngredienten;
+            if (Recept.Id == 0)
+            {
+                _receptService.VoegReceptToe(Recept);
+            }
+            else
+            {
+                _receptService.WerkReceptBij(Recept);
+            }
 
-            // Opslaan in SQL Server
-            _receptService.VoegReceptToe(Recept);
-
-            return RedirectToPage("/Recepten");
+            return RedirectToPage("/ReceptDetails", new { id = Recept.Id });
         }
     }
 }

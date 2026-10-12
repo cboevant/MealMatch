@@ -7,6 +7,10 @@
 <div class="recepten-pagina">
 
     <a asp-page="/Recepten" class="btn-toevoegen">← Terug naar recepten</a>
+    @if (Model.Recept != null)
+    {
+        <a asp-page="/ReceptToevoegen" asp-route-id="@Model.Recept.Id" class="btn-toevoegen">Bewerken</a>
+    }
 
     @if (Model.Recept == null)
     {

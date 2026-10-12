@@ -1,0 +1,52 @@
+'v2 12-10-2026 - Koppeltabel ReceptIngredient, FotoPad, FotoService
+'Ingrediënten niet dubbel opslaan, foto bij recept
+@startuml
+skinparam ClassAttributeIconSize 0
+
+class Recept {
+    + int Id
+    + string Naam
+    + int BereidingstijdMinuten
+    + int Personen 
+    + string Bereidingswijze
+    + string? Opmerking
+    + FotoPad
+}
+class Ingredient {
+    + int Id
+    + string Naam
+    + List<ReceptIngredient> ReceptIngredienten
+}
+class ReceptIngredient {
+    + int Id
+    + int ReceptId
+    + int IngredientId 
+    + string Hoeveelheid
+}
+class Planning {
+    + int Id
+    + int ReceptId
+    + string Dag 
+}
+class ReceptService {
+    - MealMatchDbContext _context
+    + ReceptService(MealMatchDbContext context)
+    + void VoegReceptToe(Recept recept)
+    + List<Recept> HaalReceptenOp()
+    + Recept? HaalReceptOp(int id)
+    + List<Recept> FilterOpBereidingstijd(int minuten)
+    + List<int> HaalBereidingstijdenOp()
+    + void VerwijderRecept(int id)
+
+}
+class FotoService {
+    - IWebHostEnvironment _omgeving
+    + FotoService(IWebHostEnvironment omgeving)
+    + string SlaFotoOp(IFormFile foto)
+}
+
+Recept "1" -- "0..*" ReceptIngredient
+Ingredient "1" .. "0..." ReceptIngredient
+Recept "1" -- "0..*" Planning
+ReceptService ..> Recept : gebruikt
+@enduml

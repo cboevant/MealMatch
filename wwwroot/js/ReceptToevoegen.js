@@ -1,4 +1,4 @@
-﻿let ingredientIndex = 1;
+﻿let ingredientIndex = document.querySelectorAll(".ingredient-rij").length;
 
 const container = document.getElementById("ingredienten-container");
 const toevoegenKnop = document.getElementById("btn-ingredient");

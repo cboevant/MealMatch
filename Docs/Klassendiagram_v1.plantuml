@@ -1,0 +1,38 @@
+'v1 05-10-2026 - Recept en Ingrediënt (één-op-veel) - Eerste ontwerp
+@startuml
+skinparam ClassAttributeIconSize 0
+
+class Recept {
+    - int Id
+    - string Naam
+    - int BereidingstijdMinuten
+    - int Personen 
+    - string Bereidingswijze
+    - string? Opmerking
+}
+
+class Ingredient {
+    - int Id
+    - string Naam
+}
+
+class Planning {
+    - int Id
+    - int ReceptId
+    - string Dag 
+}
+
+class ReceptIngredient {
+    - int Id
+    - int ReceptId
+    - int IngredientId 
+    - string Hoeveelheid
+
+}
+
+Recept "1" -- "0..*" Planning
+(Recept, Ingredient) .. ReceptIngredient
+Recept "1" -- "0..*" Ingredient
+
+
+@enduml
