@@ -1,7 +1,8 @@
-﻿@page
+﻿@page "{id:int?}"
 @model MealMatch.Pages.ReceptToevoegenModel
 @{
-    ViewData["Title"] = "Recept toevoegen";
+    bool isBewerken = Model.Recept.Id != 0;
+    ViewData["Title"] = isBewerken ? "Recept bewerken" : "Recept toevoegen";
 }
 
 <div class="recept-toevoegen-pagina">
@@ -9,13 +10,15 @@
     <div class="recept-toevoegen-header">
         <div>
             <p class="kleine-titel">Mijn recepten</p>
-            <h1>Nieuw recept toevoegen</h1>
-            <p>Voeg een nieuw recept toe aan je recepten.</p>
+            <h1>@(isBewerken ? "Recept bewerken" : "Nieuw recept toevoegen")</h1>
+            <p>@(isBewerken ? "Pas de gegevens van je recept aan." : "Voeg een nieuw recept toe aan je recepten.")</p>
         </div>
     </div>
 
     <form method="post" class="recept-formulier" enctype="multipart/form-data">
         <div asp-validation-summary="All" class="text-danger"></div>
+        <input asp-for="Recept.Id" type="hidden">
+        <input asp-for="Recept.FotoPad" type="hidden">
 
         <!-- Foto -->
         <div class="recept-foto">
@@ -26,7 +29,10 @@
             </div>
 
             <div class="foto-upload">
-
+                @if (Model.Recept.FotoPad != null)
+                {
+                    <img src="@Model.Recept.FotoPad" alt="Huidige foto" class="kaart-foto">
+                }
                 <p id="foto-tekst">Voeg een foto van je gerecht toe.</p>
 
                     <label asp-for="Foto" class="btn-foto">+ Foto kiezen</label>
@@ -190,11 +196,17 @@
 
 
         <!-- Acties -->
+                <!-- Acties -->
         <div class="formulier-acties">
 
-            <a href="/Recepten" class="btn-annuleren">
-                Annuleren
-            </a>
+            @if (isBewerken)
+            {
+                <a asp-page="/ReceptDetails" asp-route-id="@Model.Recept.Id" class="btn-annuleren">Annuleren</a>
+            }
+            else
+            {
+                <a href="/Recepten" class="btn-annuleren">Annuleren</a>
+            }
 
             <button type="submit" class="btn-opslaan">
                 Recept opslaan

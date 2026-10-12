@@ -22,25 +22,7 @@ namespace MealMatch.Model_Services
 
         public void VoegReceptToe(Recept recept)
         {
-            foreach (ReceptIngredient receptIngredient in recept.ReceptIngredienten)
-            {
-                string naam = receptIngredient.Ingredient.Naam.Trim();
-
-                // Bestaat dit ingrediënt al in de database?
-                Ingredient? bestaandIngredient = _context.Ingredienten
-                    .FirstOrDefault(i => i.Naam == naam);
-
-                if (bestaandIngredient != null)
-                {
-                    // Ja: gebruik het bestaande ingrediënt
-                    receptIngredient.Ingredient = bestaandIngredient;
-                }
-                else
-                {
-                    // Nee: er wordt een nieuw ingrediënt aangemaakt
-                    receptIngredient.Ingredient.Naam = naam;
-                }
-            }
+            KoppelBestaandeIngredienten(recept.ReceptIngredienten);
             _context.Recepten.Add(recept);
             _context.SaveChanges();
         }
@@ -77,6 +59,55 @@ namespace MealMatch.Model_Services
             {
                 _context.Recepten.Remove(recept);
                 _context.SaveChanges();
+            }
+        }
+        public void WerkReceptBij(Recept gewijzigd)
+        {
+            Recept? bestaand = _context.Recepten
+                .Include(r => r.ReceptIngredienten)
+                .FirstOrDefault(r => r.Id == gewijzigd.Id);
+
+            if (bestaand == null)
+            {
+                return;
+            }
+
+            // De gewone velden overnemen
+            bestaand.Naam = gewijzigd.Naam;
+            bestaand.BereidingstijdMinuten = gewijzigd.BereidingstijdMinuten;
+            bestaand.Personen = gewijzigd.Personen;
+            bestaand.Bereidingswijze = gewijzigd.Bereidingswijze;
+            bestaand.Opmerking = gewijzigd.Opmerking;
+            bestaand.FotoPad = gewijzigd.FotoPad;
+
+            // Oude ingrediëntregels weg, nieuwe erin
+            _context.ReceptIngredienten.RemoveRange(bestaand.ReceptIngredienten);
+            KoppelBestaandeIngredienten(gewijzigd.ReceptIngredienten);
+
+            foreach (ReceptIngredient receptIngredient in gewijzigd.ReceptIngredienten)
+            {
+                bestaand.ReceptIngredienten.Add(receptIngredient);
+            }
+
+            _context.SaveChanges();
+        }
+        private void KoppelBestaandeIngredienten(List<ReceptIngredient> receptIngredienten)
+        {
+            foreach (ReceptIngredient receptIngredient in receptIngredienten)
+            {
+                string naam = receptIngredient.Ingredient.Naam.Trim();
+
+                Ingredient? bestaandIngredient = _context.Ingredienten
+                    .FirstOrDefault(i => i.Naam == naam);
+
+                if (bestaandIngredient != null)
+                {
+                    receptIngredient.Ingredient = bestaandIngredient;
+                }
+                else
+                {
+                    receptIngredient.Ingredient.Naam = naam;
+                }
             }
         }
     }
