@@ -46,3 +46,20 @@ container.addEventListener("click", function(event) {
         ingredientIndex = rijen.length;
     }
 });
+const fotoInput = document.getElementById("Foto");
+const fotoTekst = document.getElementById("foto-tekst");
+
+fotoInput.addEventListener("change", function () {
+    if (fotoInput.files.length > 0) {
+        const foto = fotoInput.files[0];
+
+        if (foto.size > 5 * 1024 * 1024) {
+            fotoTekst.textContent = "Deze foto is groter dan 5 MB. Kies een kleinere foto, of sla het recept op zonder foto";
+            fotoTekst.classList.add("foto-fout");
+            fotoInput.value = "";
+        } else {
+            fotoTekst.textContent = "Gekozen: " + foto.name;
+            fotoTekst.classList.remove("foto-fout");
+        }
+    }
+});

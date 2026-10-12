@@ -14,7 +14,7 @@
         </div>
     </div>
 
-    <form method="post" class="recept-formulier">
+    <form method="post" class="recept-formulier" enctype="multipart/form-data">
         <div asp-validation-summary="All" class="text-danger"></div>
 
         <!-- Foto -->
@@ -27,14 +27,10 @@
 
             <div class="foto-upload">
 
-                <div class="foto-icoon">+</div>
+                <p id="foto-tekst">Voeg een foto van je gerecht toe.</p>
 
-                <p>Voeg een foto van je gerecht toe.</p>
-
-                <button type="button" class="btn-foto">
-                    Foto kiezen
-                </button>
-
+                    <label asp-for="Foto" class="btn-foto">+ Foto kiezen</label>
+                    <input asp-for="Foto" type="file" accept=".jpg,.jpeg,.png" hidden>
             </div>
 
         </div>
