@@ -1,0 +1,49 @@
+﻿@page "{id:int}"
+@model MealMatch.Pages.ReceptDetailsModel
+@{
+    ViewData["Title"] = "Recept";
+}
+
+<div class="recepten-pagina">
+
+    <a asp-page="/Recepten" class="btn-toevoegen">← Terug naar recepten</a>
+
+    @if (Model.Recept == null)
+    {
+        <p class="detail-melding">Dit recept bestaat niet (meer).</p>
+    }
+    else
+    {
+        <div class="recept-detail">
+
+            @if (Model.Recept.FotoPad != null)
+            {
+                <img src="@Model.Recept.FotoPad" alt="Foto van @Model.Recept.Naam" class="detail-foto">
+            }
+
+            <h1>@Model.Recept.Naam</h1>
+            <p class="detail-info">
+                @Model.Recept.BereidingstijdMinuten minuten · voor @Model.Recept.Personen personen
+            </p>
+
+            <h2>Ingrediënten</h2>
+            <ul>
+                @foreach (MealMatch.Models.ReceptIngredient ri in Model.Recept.ReceptIngredienten)
+                {
+                    <li>@ri.Hoeveelheid @ri.Ingredient.Naam</li>
+                }
+            </ul>
+
+            <h2>Bereidingswijze</h2>
+            <p class="detail-bereiding">@Model.Recept.Bereidingswijze</p>
+
+            @if (!string.IsNullOrWhiteSpace(Model.Recept.Opmerking))
+            {
+                <h2>Opmerking</h2>
+                <p>@Model.Recept.Opmerking</p>
+            }
+
+        </div>
+    }
+
+</div>

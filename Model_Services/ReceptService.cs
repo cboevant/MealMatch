@@ -12,6 +12,13 @@ namespace MealMatch.Model_Services
         {
             _context = context;
         }
+        public Recept? HaalReceptOp(int id)
+        {
+            return _context.Recepten
+                .Include(r => r.ReceptIngredienten)
+                    .ThenInclude(ri => ri.Ingredient)
+                .FirstOrDefault(r => r.Id == id);
+        }
 
         public void VoegReceptToe(Recept recept)
         {

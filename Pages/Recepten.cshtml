@@ -34,15 +34,17 @@
         @foreach (MealMatch.Models.Recept recept in Model.Recepten)
             {
                 <div class="recept-kaart">
-                    @if (recept.FotoPad != null)
-                    {
-                        <img src="@recept.FotoPad" alt="Foto van @recept.Naam" class="kaart-foto">
-                    }
-                    else
-                    {
-                        <div class="kaart-foto geen-foto"><i class="bi bi-image"></i></div>
-                    }
-                    <h2>@recept.Naam</h2>
+                    <a asp-page="/ReceptDetails" asp-route-id="@recept.Id" class="kaart-link">
+                        @if (recept.FotoPad != null)
+                        {
+                          <img src="@recept.FotoPad" alt="Foto van @recept.Naam" class="kaart-foto">
+                        }
+                        else
+                        {
+                            <div class="kaart-foto geen-foto"><i class="bi bi-image"></i></div>
+                        }
+                        <h2>@recept.Naam</h2>
+                    </a>
                     <p>@recept.BereidingstijdMinuten min</p>
                     <p>Voor @recept.Personen personen</p>
                     <form method="post"
