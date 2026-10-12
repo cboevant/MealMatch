@@ -570,6 +570,32 @@ h1 {
     margin-bottom: 32px;
 }
 
+.btn-toevoegen {
+    font-family: inherit;
+}
+
+.filter-balk {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+    .filter-balk label {
+        color: #8d8178;
+        font-size: 14px;
+    }
+
+    .filter-balk select {
+        font-family: inherit;
+        font-size: 14px;
+        padding: 11px 12px;
+        border: 1px solid #e6d9d0;
+        border-radius: 8px;
+        background-color: #fffdfb;
+        color: #3f3a35;
+    }
+
 .kleine-titel {
     color: #a69a91;
     font-size: 14px;
