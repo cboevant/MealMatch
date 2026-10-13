@@ -17,6 +17,8 @@ namespace MealMatch.Pages
 
         [BindProperty(SupportsGet = true)]
         public int? GekozenTijd { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string Weergave { get; set; } = "kaartjes";
         public List<int> Bereidingstijden { get; set; } = new();
 
         public void OnGet()
@@ -35,7 +37,7 @@ namespace MealMatch.Pages
         public IActionResult OnPostVerwijder(int id)
         {
             _receptService.VerwijderRecept(id);
-            return RedirectToPage();
+            return RedirectToPage(new { Weergave = Weergave });
         }
     }
 }
