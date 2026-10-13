@@ -1,0 +1,360 @@
+/* =========================
+   RECEPT TOEVOEGEN EN BEWERKEN
+   ========================= */
+
+.recept-toevoegen-pagina {
+    padding: 48px 42px;
+    max-width: 900px;
+    width: 100%;
+}
+
+.recept-toevoegen-header {
+    margin-bottom: 32px;
+}
+
+    .recept-toevoegen-header h1 {
+        margin: 0;
+        font-size: 36px;
+        font-weight: 600;
+    }
+
+    .recept-toevoegen-header p:last-child {
+        margin-top: 8px;
+        color: #8d8178;
+        font-size: 15px;
+    }
+
+
+/* =========================
+   FORMULIER
+   ========================= */
+
+.recept-formulier {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+/* =========================
+   FOTO
+   ========================= */
+
+.recept-foto {
+    background-color: #fffdfb;
+    border: 1px solid #e7ddd6;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 2px 8px rgba(80, 60, 50, 0.04);
+}
+
+/* Titel van de foto-sectie */
+
+.foto-titel {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+}
+
+    .foto-titel i {
+        color: #b75f45;
+        font-size: 20px;
+        width: 22px;
+        text-align: center;
+    }
+
+    .foto-titel h2 {
+        margin: 0;
+        font-size: 21px;
+        font-weight: 500;
+    }
+
+
+/* Upload gedeelte */
+
+.foto-upload {
+    min-height: 150px;
+    border: 1px dashed #d8c2b5;
+    border-radius: 10px;
+    background-color: #f4e8df;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.foto-upload p.foto-fout {
+    color: #b3261e;
+    font-weight: 600;
+}
+
+
+/* Tekst */
+
+.foto-upload p {
+    color: #8d8178;
+    font-size: 14px;
+    margin: 0 0 14px;
+}
+
+
+/* Knop */
+
+.btn-foto {
+    border: 1px solid #e6d9d0;
+    background-color: #fffdfb;
+    color: #a85e49;
+    border-radius: 7px;
+    padding: 9px 15px;
+    cursor: pointer;
+}
+
+
+/* =========================
+   FORMULIER SECTIES
+   ========================= */
+
+.formulier-sectie {
+    background-color: #fffdfb;
+    border: 1px solid #e7ddd6;
+    border-radius: 12px;
+    padding: 0;
+    box-shadow: 0 2px 8px rgba(80, 60, 50, 0.04);
+}
+
+
+    /* Titel + icoon + pijl */
+
+    .formulier-sectie summary {
+        list-style: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 24px;
+    }
+
+        .formulier-sectie summary::-webkit-details-marker {
+            display: none;
+        }
+
+
+/* Icoon en titel bij elkaar */
+
+.sectie-titel {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+
+    /* Bootstrap icon */
+
+.sectie-titel i {
+    display: inline-block;
+    color: #b75f45;
+    font-size: 18px;
+    width: 22px;
+    text-align: center;
+}
+
+
+/* Titel */
+
+.formulier-sectie summary h2 {
+    margin: 0;
+    font-size: 21px;
+    font-weight: 500;
+}
+
+
+/* Pijl */
+
+.pijl {
+    color: #a85e49;
+    font-size: 22px;
+    line-height: 1;
+    transition: transform 0.2s ease;
+}
+
+
+/* Pijl draait wanneer de sectie geopend is */
+
+.formulier-sectie[open] .pijl {
+    transform: rotate(180deg);
+}
+
+
+/* Ruimte rondom de inhoud */
+
+.formulier-sectie > .formulier-veld,
+.formulier-sectie > .formulier-rij,
+.formulier-sectie > .ingredient-rij,
+.formulier-sectie > .btn-ingredient {
+    margin-left: 24px;
+    margin-right: 24px;
+}
+
+    .formulier-sectie > .formulier-veld:last-child {
+        margin-bottom: 24px;
+    }
+
+.formulier-sectie > .ingredient-rij {
+    margin-bottom: 14px;
+}
+
+.formulier-sectie > .btn-ingredient {
+    margin-bottom: 24px;
+}
+
+
+/* =========================
+   VELDEN
+   ========================= */
+
+.formulier-veld {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-bottom: 18px;
+}
+
+    .formulier-veld:last-child {
+        margin-bottom: 0;
+    }
+
+    .formulier-veld label {
+        color: #665b54;
+        font-size: 14px;
+    }
+
+    .formulier-veld input,
+    .formulier-veld textarea,
+    .ingredient-rij input {
+        border: 1px solid #e2d6ce;
+        background-color: #fffdfb;
+        border-radius: 7px;
+        padding: 8px 12px;
+        font-family: inherit;
+        font-size: 14px;
+        color: #4f4742;
+    }
+
+        .formulier-veld input:focus,
+        .formulier-veld textarea:focus,
+        .ingredient-rij input:focus {
+            outline: none;
+            border-color: #b75f45;
+        }
+
+
+/* =========================
+   TWEE VELDEN NAAST ELKAAR (BASISINFORMATIE)
+   ========================= */
+
+.formulier-rij {
+    display: grid;
+    grid-template-columns: 340px 350px;
+    gap: 35px;
+    margin-left: 24px;
+    margin-right: 24px;
+}
+
+/* =========================
+   INGREDIËNTEN
+   ========================= */
+
+/* Drie velden naast elkaar: naam, hoeveelheid en knop verwijderen */
+
+.ingredient-rij {
+    display: grid;
+    grid-template-columns: 350px 150px 150px;
+    gap: 30px;
+    margin-bottom: 14px;
+    margin-right: 24px;
+    margin-left: 24px;
+}
+
+.btn-ingredient {
+    border: 1px solid #e6d9d0;
+    background-color: #f4e8df;
+    color: #b75f45;
+    border-radius: 7px;
+    padding: 9px 14px;
+    cursor: pointer;
+    margin-left: 24px;
+}
+
+.btn-verwijder {
+    border: 1px solid #e6d9d0;
+    background-color: transparent;
+    color: #a85e49;
+    border-radius: 7px;
+    padding: 9px 12px;
+    cursor: pointer;
+}
+
+
+/* =========================
+   ACTIEKNOPPEN
+   ========================= */
+
+.formulier-acties {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 4px;
+}
+
+.btn-annuleren,
+.btn-opslaan {
+    border-radius: 7px;
+    padding: 11px 18px;
+    font-size: 14px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn-annuleren {
+    border: 1px solid #e2d6ce;
+    background-color: transparent;
+    color: #8d8178;
+}
+
+.btn-opslaan {
+    border: 1px solid #b75f45;
+    background-color: #b75f45;
+    color: white;
+}
+
+
+/* =========================
+   RESPONSIVE - RECEPT TOEVOEGEN
+   ========================= */
+
+@media (max-width: 600px) {
+
+    .recept-toevoegen-pagina {
+        padding: 30px 20px;
+    }
+
+    .formulier-rij {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .ingredient-rij {
+        grid-template-columns: 1fr;
+    }
+
+    .formulier-acties {
+        flex-direction: column-reverse;
+    }
+
+    .btn-annuleren,
+    .btn-opslaan {
+        text-align: center;
+    }
+}

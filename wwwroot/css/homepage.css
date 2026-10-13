@@ -1,0 +1,389 @@
+/* =========================================
+   HOOFDINHOUD
+   ========================================= */
+
+.main-content {
+    padding: 38px 42px;
+    min-width: 0;
+}
+
+.week-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: 35px;
+}
+
+.date-label {
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    color: #aaa29b;
+    margin: 0 0 7px;
+}
+.week-navigation {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    color: #8b837c;
+}
+
+.arrow-button {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #e8e1da;
+    background-color: #fffdf9;
+    border-radius: 8px;
+    font-size: 20px;
+    color: #918a84;
+    cursor: pointer;
+}
+
+    .arrow-button:hover {
+        background-color: #f1e8e1;
+    }
+
+/* =========================================
+   WEEKPLANNING
+   ========================================= */
+
+.week-planner {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 11px;
+}
+
+.day {
+    min-width: 0;
+}
+
+.day-header {
+    height: 38px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    color: #aaa29b;
+    text-transform: uppercase;
+}
+
+    .day-header strong {
+        font-family: Georgia, serif;
+        font-size: 21px;
+        color: #bc674a;
+        font-weight: normal;
+    }
+
+/* =========================================
+   MAALTIJDKAART
+   ========================================= */
+
+.meal-card {
+    background-color: #fffefa;
+    border: 1px solid #eee8e1;
+    border-radius: 10px;
+    padding: 14px 12px;
+    min-height: 145px;
+    box-shadow: 0 2px 8px rgba(80, 60, 40, 0.04);
+}
+
+.meal-type {
+    font-family: Arial, sans-serif;
+    font-size: 9px;
+    letter-spacing: 1px;
+    color: #aaa29b;
+}
+
+.meal-card h2 {
+    font-size: 17px;
+    line-height: 1.15;
+    margin: 10px 0 16px;
+    color: #403a34;
+}
+
+.meal-info {
+    border-top: 1px solid #eee9e4;
+    padding-top: 10px;
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    color: #938b84;
+}
+
+/* =========================================
+   MAALTIJD TOEVOEGEN
+   ========================================= */
+
+.add-meal {
+    width: 100%;
+    min-height: 145px;
+    border: 1px dashed #ddd5cd;
+    background-color: transparent;
+    border-radius: 10px;
+    color: #aaa29b;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    line-height: 1.4;
+}
+
+    .add-meal:hover {
+        background-color: #f5f0eb;
+        border-color: #c87555;
+        color: #c87555;
+    }
+
+.plus {
+    font-size: 26px;
+    font-weight: 200;
+    margin-bottom: 5px;
+}
+
+/* =========================================
+   VOORTGANG
+   ========================================= */
+
+.progress-card {
+    margin-top: 40px;
+    min-height: 82px;
+    background-color: #fffefa;
+    border: 1px solid #eee8e1;
+    border-radius: 11px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 20px;
+    box-shadow: 0 2px 8px rgba(80, 60, 40, 0.04);
+}
+
+.progress-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 9px;
+    background-color: #f6e9e2;
+    color: #c76c4d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+}
+
+.progress-text {
+    flex: 1;
+}
+
+    .progress-text h3 {
+        margin: 0 0 4px;
+        font-size: 15px;
+    }
+
+    .progress-text p {
+        margin: 0;
+        color: #9a928b;
+        font-family: Arial, sans-serif;
+        font-size: 11px;
+    }
+
+.progress {
+    width: 140px;
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    color: #aaa29b;
+}
+
+.progress-bar {
+    height: 5px;
+    background-color: #eee8e1;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 7px;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 60%;
+    background-color: #c76c4d;
+}
+
+/* =========================================
+   ZIJBALK RECHTS
+   ========================================= */
+
+.right-sidebar {
+    border-left: 1px solid #eee7df;
+    padding: 36px 22px;
+    background-color: #fcfaf6;
+}
+
+.section-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 13px;
+}
+
+    .section-title h2 {
+        font-size: 17px;
+        margin: 0;
+    }
+
+    .section-title a {
+        text-decoration: none;
+        font-family: Arial, sans-serif;
+        font-size: 11px;
+        color: #c76c4d;
+    }
+
+/* =========================================
+   BOODSCHAPPENLIJST
+   ========================================= */
+
+.shopping-card {
+    background-color: #fffefa;
+    border: 1px solid #e7e0d9;
+    border-radius: 10px;
+    padding: 14px;
+}
+
+    .shopping-card h3 {
+        font-family: Arial, sans-serif;
+        font-size: 9px;
+        letter-spacing: 1px;
+        color: #aaa29b;
+        margin: 5px 0 10px;
+    }
+
+.shopping-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 0;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    color: #68625d;
+}
+
+    .shopping-item input {
+        appearance: none;
+        width: 15px;
+        height: 15px;
+        border: 2px solid #d8d1ca;
+        border-radius: 4px;
+        background-color: white;
+    }
+
+        .shopping-item input:checked {
+            background-color: #78907c;
+            border-color: #78907c;
+        }
+
+    .shopping-item small {
+        margin-left: auto;
+        color: #aaa29b;
+    }
+
+/* =========================================
+   SNEL TOEVOEGEN
+   ========================================= */
+
+.quick-add {
+    margin-top: 28px;
+}
+
+.quick-meal {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    margin-bottom: 8px;
+    background-color: #fffefa;
+    border: 1px solid #e8e1da;
+    border-radius: 9px;
+}
+
+.meal-image {
+    width: 36px;
+    height: 36px;
+    border-radius: 7px;
+    background-color: #eee7dd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+}
+
+.quick-meal strong {
+    display: block;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    color: #514b45;
+}
+
+.quick-meal small {
+    display: block;
+    margin-top: 3px;
+    font-family: Arial, sans-serif;
+    font-size: 9px;
+    color: #aaa29b;
+}
+
+.find-recipe {
+    width: 100%;
+    height: 35px;
+    margin-top: 3px;
+    background-color: transparent;
+    border: 1px dashed #ded6cf;
+    border-radius: 8px;
+    color: #aaa29b;
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    cursor: pointer;
+}
+
+    .find-recipe:hover {
+        background-color: #f4eee8;
+        color: #c76c4d;
+    }
+
+/* =========================================
+   RESPONSIVE - HOMEPAGE
+   ========================================= */
+
+@media (max-width: 1000px) {
+
+    .right-sidebar {
+        display: none;
+    }
+
+    .week-planner {
+        grid-template-columns: repeat(3, 1fr);
+        row-gap: 20px;
+    }
+}
+
+
+@media (max-width: 700px) {
+
+    .main-content {
+        padding: 25px 20px;
+    }
+
+    .week-header {
+        display: block;
+    }
+
+    .week-navigation {
+        margin-top: 20px;
+    }
+
+    .week-planner {
+        grid-template-columns: 1fr 1fr;
+    }
+}
