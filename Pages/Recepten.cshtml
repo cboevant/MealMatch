@@ -27,17 +27,65 @@
                 <option value="@tijd">@tijd minuten</option>
             }
         </select>
+        <input type="hidden" name="Weergave" value="@Model.Weergave">
         <button type="submit" class="btn-toevoegen">Filter</button>
     </form>
-
-    <div class="recepten-lijst">
-        @foreach (MealMatch.Models.Recept recept in Model.Recepten)
+    <div class="weergave-knoppen">
+        <a asp-page="/Recepten" asp-route-Weergave="kaartjes" asp-route-GekozenTijd="@Model.GekozenTijd"
+           class="weergave-knop @(Model.Weergave != "lijst" ? "actief" : "")">
+            <i class="bi bi-grid"></i> Kaartjes
+        </a>
+        <a asp-page="/Recepten" asp-route-Weergave="lijst" asp-route-GekozenTijd="@Model.GekozenTijd"
+           class="weergave-knop @(Model.Weergave == "lijst" ? "actief" : "")">
+            <i class="bi bi-list-ul"></i> Lijst
+        </a>
+    </div>
+    @if (Model.Recepten.Count == 0)
+    {
+        <p>Er zijn geen recepten gevonden.</p>
+    }
+    else if (Model.Weergave == "lijst")
+    {
+        <table class="recepten-tabel">
+            <thead>
+                <tr>
+                    <th>Naam</th>
+                    <th>Bereidingstijd</th>
+                    <th>Personen</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (MealMatch.Models.Recept recept in Model.Recepten)
+                {
+                    <tr>
+                        <td><a asp-page="/ReceptDetails" asp-route-id="@recept.Id">@recept.Naam</a></td>
+                        <td>@recept.BereidingstijdMinuten min</td>
+                        <td>@recept.Personen</td>
+                        <td>
+                            <form method="post"
+                                  asp-page-handler="Verwijder"
+                                  asp-route-id="@recept.Id"
+                                  asp-route-Weergave="@Model.Weergave"
+                                  onsubmit="return confirm('Weet je zeker dat je dit recept wilt verwijderen?');">
+                                <button type="submit">Verwijderen</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="recepten-lijst">
+            @foreach (MealMatch.Models.Recept recept in Model.Recepten)
             {
                 <div class="recept-kaart">
                     <a asp-page="/ReceptDetails" asp-route-id="@recept.Id" class="kaart-link">
                         @if (recept.FotoPad != null)
                         {
-                          <img src="@recept.FotoPad" alt="Foto van @recept.Naam" class="kaart-foto">
+                            <img src="@recept.FotoPad" alt="Foto van @recept.Naam" class="kaart-foto">
                         }
                         else
                         {
@@ -48,18 +96,17 @@
                     <p>@recept.BereidingstijdMinuten min</p>
                     <p>Voor @recept.Personen personen</p>
                     <form method="post"
-                        asp-page-handler="Verwijder"
-                        asp-route-id="@recept.Id"
-                        onsubmit="return confirm('Weet je zeker dat je dit recept wilt verwijderen?');">
-                      <button type="submit">Verwijderen</button>
+                          asp-page-handler="Verwijder"
+                          asp-route-id="@recept.Id"
+                          asp-route-Weergave="@Model.Weergave"
+                          onsubmit="return confirm('Weet je zeker dat je dit recept wilt verwijderen?');">
+                        <button type="submit">Verwijderen</button>
                     </form>
                 </div>
             }
-    </div>
-
-    @if (Model.Recepten.Count == 0)
-    {
-        <p>Er zijn geen recepten gevonden.</p>
+        </div>
     }
+
+</div>
 
 </div>

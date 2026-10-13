@@ -1,3 +1,4 @@
+/*BASIS (standaard van Visual Studio*/
 html {
     font-size: 14px;
 }
@@ -686,7 +687,9 @@ h1 {
     .kaart-link:hover h2 {
         color: #b75f45;
     }
-
+/* =========================
+   RECEPT BEKIJKEN
+   ========================= */
 .recept-detail {
     margin-top: 24px;
     background-color: #fffdfb;
@@ -710,6 +713,69 @@ h1 {
 .detail-bereiding {
     white-space: pre-line;
 }
+/* =========================
+   WEERGAVE: KAARTJES OF LIJST
+   ========================= */
+.weergave-knoppen {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.weergave-knop {
+    border: 1px solid #e6d9d0;
+    border-radius: 8px;
+    padding: 8px 14px;
+    background-color: #fffdfb;
+    color: #8d8178;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+    .weergave-knop.actief {
+        background-color: #f4e8df;
+        color: #b75f45;
+    }
+
+.recepten-tabel {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fffdfb;
+    border: 1px solid #e7ddd6;
+}
+
+    .recepten-tabel th,
+    .recepten-tabel td {
+        padding: 12px 16px;
+        text-align: left;
+        border-bottom: 1px solid #f0e6df;
+        font-size: 14px;
+    }
+
+    .recepten-tabel th {
+        color: #8d8178;
+        font-weight: 500;
+    }
+
+    .recepten-tabel a {
+        color: #3f3a35;
+        text-decoration: none;
+    }
+
+        .recepten-tabel a:hover {
+            color: #b75f45;
+        }
+
+    .recepten-tabel button {
+        border: 1px solid #e6d9d0;
+        background-color: transparent;
+        color: #a85e49;
+        border-radius: 6px;
+        padding: 6px 10px;
+        font-size: 13px;
+        font-family: inherit;
+        cursor: pointer;
+    }
 
 /* =========================
    RESPONSIVE
