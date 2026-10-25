@@ -1,4 +1,5 @@
 ﻿using MealMatch.Models;
+using MealMatch.Model_Services;
 
 public class ReceptFilterTests
 {
@@ -8,13 +9,13 @@ public class ReceptFilterTests
         // Arrange
         List<Recept> recepten = new List<Recept>
         {
-            new Recept { Naam = "Pasta", Bereidingstijd = 20 },
-            new Recept { Naam = "Stoofpot", Bereidingstijd = 120 }
+            new Recept { Naam = "Pasta", BereidingstijdMinuten = 20 },
+            new Recept { Naam = "Stoofpot", BereidingstijdMinuten = 120 }
         };
         ReceptFilter filter = new ReceptFilter();
 
         // Act
-        List<Recept> resultaat = filter.FilterOpBereidingstijd(recepten, 30);
+        List<Recept> resultaat = filter.FilterOpBereidingstijd(recepten, 20);
 
         // Assert
         Assert.Single(resultaat);

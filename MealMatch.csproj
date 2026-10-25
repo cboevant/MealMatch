@@ -23,4 +23,12 @@
     <Folder Include="wwwroot\uploads\" />
   </ItemGroup>
 
+  <!-- Het testproject staat in deze map, maar hoort niet bij de webapp zelf -->
+  <ItemGroup>
+    <Compile Remove="MealMatch.Tests\**" />
+    <Content Remove="MealMatch.Tests\**" />
+    <None Remove="MealMatch.Tests\**" />
+    <EmbeddedResource Remove="MealMatch.Tests\**" />
+  </ItemGroup>
+
 </Project>
