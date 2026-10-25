@@ -364,3 +364,7 @@ FodyWeavers.xsd
 
 # Foto's die gebruikers uploaden (gegevens, geen code)
 wwwroot/uploads/
+
+# Testresultaten en coverage-rapporten
+TestResults/
+CoverageRapport/
