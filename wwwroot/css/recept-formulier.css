@@ -229,6 +229,32 @@
         color: #665b54;
         font-size: 14px;
     }
+/* Verplichte velden */
+.verplicht {
+color: #c87555;
+font-weight: bold;
+}
+
+.verplicht-uitleg {
+font-size: 14px;
+color: #8d8178;
+margin-bottom: 16px;
+}
+
+    /* Uitleg bij foto uploaden */
+    .foto-eisen {
+    display: block;
+    margin-top: 8px;
+    font-size: 13px;
+    color: #8d8178;
+    }
+
+.ingredient-uitleg {
+    display: block;
+    margin: 0 24px 10px 24px;
+    font-size: 13px;
+    color: #8d8178;
+}
 
     .formulier-veld input,
     .formulier-veld textarea,
