@@ -52,7 +52,31 @@
         background-color: #fffdfb;
         color: #3f3a35;
     }
+/* =========================
+   KIES-MODUS (recept kiezen voor de weekplanning)
+   ========================= */
 
+.kies-melding {
+    background-color: #f5f0eb;
+    border: 1px solid #e6d9d0;
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin-bottom: 16px;
+}
+
+    .kies-melding a {
+        margin-left: 12px;
+        color: #c87555;
+    }
+
+.btn-kies {
+    background-color: #c87555;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 12px;
+    cursor: pointer;
+}
 
 /* =========================
    RECEPTENLIJST

@@ -6,10 +6,31 @@
 
 <div class="recepten-pagina">
 
-    <a asp-page="/Recepten" class="btn-toevoegen">← Terug naar recepten</a>
+    @* ===== KNOPPEN BOVENAAN ===== *@
+    @* Terug-link geeft PlanDatum mee, zodat je in de kies-modus blijft *@
+    <a asp-page="/Recepten"
+       asp-route-PlanDatum="@Model.PlanDatum?.ToString("yyyy-MM-dd")"
+       class="btn-toevoegen">← Terug naar recepten</a>
+
     @if (Model.Recept != null)
     {
-        <a asp-page="/ReceptToevoegen" asp-route-id="@Model.Recept.Id" class="btn-toevoegen">Bewerken</a>
+        @* Kies-modus: recept direct inplannen *@
+        @if (Model.PlanDatum != null)
+        {
+            <form method="post"
+                  asp-page="/Recepten"
+                  asp-page-handler="Kies"
+                  asp-route-id="@Model.Recept.Id"
+                  asp-route-PlanDatum="@Model.PlanDatum.Value.ToString("yyyy-MM-dd")"
+                  style="display:inline">
+                <button type="submit" class="btn-kies">Kies dit recept</button>
+            </form>
+        }
+        @* Normale modus: recept bewerken *@
+        else
+        {
+            <a asp-page="/ReceptToevoegen" asp-route-id="@Model.Recept.Id" class="btn-toevoegen">Bewerken</a>
+        }
     }
 
     @if (Model.Recept == null)

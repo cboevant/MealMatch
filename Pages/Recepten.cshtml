@@ -6,6 +6,7 @@
 
 <div class="recepten-pagina">
 
+    @* ===== HEADER: titel en knop om een recept toe te voegen ===== *@
     <div class="recepten-header">
         <div>
             <p class="kleine-titel">Mijn recepten</p>
@@ -18,6 +19,18 @@
         </a>
     </div>
 
+    @* ===== KIES-MELDING: alleen zichtbaar als je via het plusje op de homepage komt ===== *@
+    @if (Model.PlanDatum != null)
+    {
+        <div class="kies-melding">
+            Kies een recept voor
+            <strong>@Model.PlanDatum.Value.ToString("dddd d MMMM", new System.Globalization.CultureInfo("nl-NL"))</strong>
+            <a asp-page="/Index">Annuleren</a>
+        </div>
+    }
+
+    @* ===== FILTER: recepten filteren op bereidingstijd ===== *@
+    @* De hidden velden zorgen dat Weergave en PlanDatum niet kwijtraken bij het filteren *@
     <form method="get" class="filter-balk">
         <label asp-for="GekozenTijd">Bereidingstijd</label>
         <select asp-for="GekozenTijd">
@@ -28,22 +41,35 @@
             }
         </select>
         <input type="hidden" name="Weergave" value="@Model.Weergave">
+        <input type="hidden" name="PlanDatum" value="@Model.PlanDatum?.ToString("yyyy-MM-dd")">
         <button type="submit" class="btn-toevoegen">Filter</button>
     </form>
+
+    @* ===== WEERGAVE-KNOPPEN: wisselen tussen kaartjes en lijst ===== *@
     <div class="weergave-knoppen">
-        <a asp-page="/Recepten" asp-route-Weergave="kaartjes" asp-route-GekozenTijd="@Model.GekozenTijd"
+        <a asp-page="/Recepten"
+           asp-route-Weergave="kaartjes"
+           asp-route-GekozenTijd="@Model.GekozenTijd"
+           asp-route-PlanDatum="@Model.PlanDatum?.ToString("yyyy-MM-dd")"
            class="weergave-knop @(Model.Weergave != "lijst" ? "actief" : "")">
             <i class="bi bi-grid"></i> Kaartjes
         </a>
-        <a asp-page="/Recepten" asp-route-Weergave="lijst" asp-route-GekozenTijd="@Model.GekozenTijd"
+        <a asp-page="/Recepten"
+           asp-route-Weergave="lijst"
+           asp-route-GekozenTijd="@Model.GekozenTijd"
+           asp-route-PlanDatum="@Model.PlanDatum?.ToString("yyyy-MM-dd")"
            class="weergave-knop @(Model.Weergave == "lijst" ? "actief" : "")">
             <i class="bi bi-list-ul"></i> Lijst
         </a>
     </div>
+
+    @* ===== GEEN RECEPTEN: melding als de lijst leeg is ===== *@
     @if (Model.Recepten.Count == 0)
     {
         <p>Er zijn geen recepten gevonden.</p>
     }
+
+    @* ===== LIJST-WEERGAVE: recepten in een tabel ===== *@
     else if (Model.Weergave == "lijst")
     {
         <table class="recepten-tabel">
@@ -59,30 +85,47 @@
                 @foreach (MealMatch.Models.Recept recept in Model.Recepten)
                 {
                     <tr>
-                        <td><a asp-page="/ReceptDetails" asp-route-id="@recept.Id">@recept.Naam</a></td>
+                        <td><a asp-page="/ReceptDetails" asp-route-id="@recept.Id" asp-route-PlanDatum="@Model.PlanDatum?.ToString("yyyy-MM-dd")">@recept.Naam</a></td>
                         <td>@recept.BereidingstijdMinuten min</td>
                         <td>@recept.Personen</td>
                         <td>
-                            <form method="post"
-                                  asp-page-handler="Verwijder"
-                                  asp-route-id="@recept.Id"
-                                  asp-route-Weergave="@Model.Weergave"
-                                  onsubmit="return confirm('Weet je zeker dat je dit recept wilt verwijderen?');">
-                                <button type="submit">Verwijderen</button>
-                            </form>
+                            @* Kies-modus: knop om dit recept in te plannen *@
+                            @if (Model.PlanDatum != null)
+                            {
+                                <form method="post"
+                                      asp-page-handler="Kies"
+                                      asp-route-id="@recept.Id"
+                                      asp-route-PlanDatum="@Model.PlanDatum.Value.ToString("yyyy-MM-dd")">
+                                    <button type="submit" class="btn-kies">Kies dit recept</button>
+                                </form>
+                            }
+                            @* Normale modus: knop om dit recept te verwijderen *@
+                            else
+                            {
+                                <form method="post"
+                                      asp-page-handler="Verwijder"
+                                      asp-route-id="@recept.Id"
+                                      asp-route-Weergave="@Model.Weergave"
+                                      onsubmit="return confirm('Weet je zeker dat je dit recept wilt verwijderen?');">
+                                    <button type="submit">Verwijderen</button>
+                                </form>
+                            }
                         </td>
                     </tr>
                 }
             </tbody>
         </table>
     }
+
+    @* ===== KAARTJES-WEERGAVE: recepten als kaartjes met foto ===== *@
     else
     {
         <div class="recepten-lijst">
             @foreach (MealMatch.Models.Recept recept in Model.Recepten)
             {
                 <div class="recept-kaart">
-                    <a asp-page="/ReceptDetails" asp-route-id="@recept.Id" class="kaart-link">
+                    <a asp-page="/ReceptDetails" asp-route-id="@recept.Id" class="kaart-link"
+                       asp-route-PlanDatum="@Model.PlanDatum?.ToString("yyyy-MM-dd")">
                         @if (recept.FotoPad != null)
                         {
                             <img src="@recept.FotoPad" alt="Foto van @recept.Naam" class="kaart-foto">
@@ -95,18 +138,31 @@
                     </a>
                     <p>@recept.BereidingstijdMinuten min</p>
                     <p>Voor @recept.Personen personen</p>
-                    <form method="post"
-                          asp-page-handler="Verwijder"
-                          asp-route-id="@recept.Id"
-                          asp-route-Weergave="@Model.Weergave"
-                          onsubmit="return confirm('Weet je zeker dat je dit recept wilt verwijderen?');">
-                        <button type="submit">Verwijderen</button>
-                    </form>
+
+                    @* Kies-modus: knop om dit recept in te plannen *@
+                    @if (Model.PlanDatum != null)
+                    {
+                        <form method="post"
+                              asp-page-handler="Kies"
+                              asp-route-id="@recept.Id"
+                              asp-route-PlanDatum="@Model.PlanDatum.Value.ToString("yyyy-MM-dd")">
+                            <button type="submit" class="btn-kies">Kies dit recept</button>
+                        </form>
+                    }
+                    @* Normale modus: knop om dit recept te verwijderen *@
+                    else
+                    {
+                        <form method="post"
+                              asp-page-handler="Verwijder"
+                              asp-route-id="@recept.Id"
+                              asp-route-Weergave="@Model.Weergave"
+                              onsubmit="return confirm('Weet je zeker dat je dit recept wilt verwijderen?');">
+                            <button type="submit">Verwijderen</button>
+                        </form>
+                    }
                 </div>
             }
         </div>
     }
-
-</div>
 
 </div>
