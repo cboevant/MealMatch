@@ -1,0 +1,97 @@
+﻿'v4 27-10-2026 - Planning met Datum in plaats van Dag, zodat weken te onderscheiden zijn.
+'
+@startuml
+skinparam ClassAttributeIconSize 0
+
+package "Models" {
+    class Recept {
+        + int Id
+        + string Naam
+        + int BereidingstijdMinuten
+        + int Personen
+        + string Bereidingswijze
+        + string? Opmerking
+        + string? FotoPad
+        + List<ReceptIngredient> ReceptIngredienten
+    }
+
+    class Ingredient {
+        + int Id
+        + string Naam
+        + List<ReceptIngredient> ReceptIngredienten
+    }
+
+    class ReceptIngredient {
+        + int Id
+        + int ReceptId
+        + int IngredientId
+        + string Hoeveelheid
+    }
+
+    class Planning {
+        + int Id
+        + DateTime Datum
+        + int ReceptId
+        + Recept? Recept
+    }
+}
+
+package "Services" {
+    class ReceptService {
+        - MealMatchDbContext _context
+        + ReceptService(MealMatchDbContext context)
+        + void VoegReceptToe(Recept recept)
+        + List<Recept> HaalReceptenOp()
+        + Recept? HaalReceptOp(int id)
+        + List<Recept> FilterOpBereidingstijd(int minuten)
+        + List<int> HaalBereidingstijdenOp()
+        + void VerwijderRecept(int id)
+        + void WerkReceptBij(Recept gewijzigd)
+        - void KoppelBestaandeIngredienten(List<ReceptIngredient> receptIngredienten)
+    }
+
+    class FotoService {
+        - IWebHostEnvironment _omgeving
+        + FotoService(IWebHostEnvironment omgeving)
+        + string SlaFotoOp(IFormFile foto)
+    }
+}
+
+package "Pages" {
+    class ReceptenModel {
+        - ReceptService _receptService
+        + List<Recept> Recepten
+        + int? GekozenTijd
+        + string Weergave
+        + List<int> Bereidingstijden
+        + void OnGet()
+        + IActionResult OnPostVerwijder(int id)
+    }
+
+    class ReceptDetailsModel {
+        - ReceptService _receptService
+        + Recept? Recept
+        + void OnGet(int id)
+    }
+
+    class ReceptToevoegenModel {
+        - ReceptService _receptService
+        - FotoService _fotoService
+        + Recept Recept
+        + List<ReceptIngredient> ReceptIngredienten
+        + IFormFile? Foto
+        + IActionResult OnGet(int? id)
+        + IActionResult OnPost()
+    }
+}
+
+Recept "1" -- "0..*" ReceptIngredient
+Ingredient "1" -- "0..*" ReceptIngredient
+Recept "1" -- "0..*" Planning
+
+ReceptService ..> Recept : gebruikt
+ReceptenModel ..> ReceptService : gebruikt
+ReceptDetailsModel ..> ReceptService : gebruikt
+ReceptToevoegenModel ..> ReceptService : gebruikt
+ReceptToevoegenModel ..> FotoService : gebruikt
+@enduml
