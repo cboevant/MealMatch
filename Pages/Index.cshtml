@@ -1,5 +1,6 @@
 ﻿@page
 @model IndexModel
+@using MealMatch.Models
 @{
     ViewData["Title"] = "Home page";
 }
@@ -21,7 +22,7 @@
                     ‹
                 </button>
 
-                <span>21 – 25 september</span>
+            <span>@Model.WeekTekst</span>
 
                 <button class="arrow-button">
                     ›
@@ -33,130 +34,46 @@
 
 
         <!-- WEEKPLANNING -->
-        <section class="week-planner">
+    <section class="week-planner">
 
-            <!-- MAANDAG -->
+        @{
+            string[] dagNamen = { "MA", "DI", "WO", "DO", "VR" };
+        }
+
+        @for (int i = 0; i < 5; i++)
+        {
+            DateTime dag = Model.Maandag.AddDays(i);
+            Planning? maaltijd = Model.GeplandeMaaltijden.FirstOrDefault(p => p.Datum == dag);
+
             <div class="day">
 
                 <div class="day-header">
-                    <span>MA</span>
-                    <strong>21</strong>
+                    <span>@dagNamen[i]</span>
+                    <strong>@dag.Day</strong>
                 </div>
 
-                <div class="meal-card">
-
-                    <span class="meal-type">
-                        AVOND
-                    </span>
-
-                    <h2>
-                        Kip met<br>
-                        groenten
-                    </h2>
-
-                    <div class="meal-info">
-                        <span>◷ 30 min</span>
-                    </div>
-
-                </div>
+                @if (maaltijd != null && maaltijd.Recept != null)
+                {
+                    <a asp-page="/ReceptDetails" asp-route-id="@maaltijd.Recept.Id" class="meal-card kaart-link">
+                        <span class="meal-type">AVOND</span>
+                        <h2>@maaltijd.Recept.Naam</h2>
+                        <div class="meal-info">
+                            <span>◷ @maaltijd.Recept.BereidingstijdMinuten min</span>
+                        </div>
+                    </a>
+                }
+                else
+                {
+                    <button type="button" class="add-meal">
+                        <span class="plus">+</span>
+                        <span>Maaltijd<br>toevoegen</span>
+                    </button>
+                }
 
             </div>
+        }
 
-
-            <!-- DINSDAG -->
-            <div class="day">
-
-                <div class="day-header">
-                    <span>DI</span>
-                    <strong>22</strong>
-                </div>
-
-                <div class="meal-card">
-
-                    <span class="meal-type">
-                        AVOND
-                    </span>
-
-                    <h2>
-                        Romige<br>
-                        pasta
-                    </h2>
-
-                    <div class="meal-info">
-                        <span>◷ 25 min</span>
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- WOENSDAG -->
-            <div class="day">
-
-                <div class="day-header">
-                    <span>WO</span>
-                    <strong>23</strong>
-                </div>
-
-                <div class="meal-card">
-
-                    <span class="meal-type">
-                        AVOND
-                    </span>
-
-                    <h2>
-                        Groente<br>
-                        bowl
-                    </h2>
-
-                    <div class="meal-info">
-                        <span>◷ 20 min</span>
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- DONDERDAG -->
-            <div class="day">
-
-                <div class="day-header">
-                    <span>DO</span>
-                    <strong>24</strong>
-                </div>
-
-                <button class="add-meal">
-
-                    <span class="plus">+</span>
-
-                    <span>Maaltijd<br>toevoegen</span>
-
-                </button>
-
-            </div>
-
-
-            <!-- VRIJDAG -->
-            <div class="day">
-
-                <div class="day-header">
-                    <span>VR</span>
-                    <strong>25</strong>
-                </div>
-
-                <button class="add-meal">
-
-                    <span class="plus">+</span>
-
-                    <span>Maaltijd<br>toevoegen</span>
-
-                </button>
-
-            </div>
-
-        </section>
+    </section>
 
 
         <!-- PROGRESS -->
