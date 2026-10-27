@@ -101,6 +101,8 @@
     line-height: 1.15;
     margin: 10px 0 16px;
     color: #403a34;
+    hyphens: auto;
+    overflow-wrap: break-word;
 }
 
 .meal-info {
@@ -110,6 +112,17 @@
     font-size: 11px;
     color: #938b84;
 }
+
+/* De maaltijdkaart is een link naar het recept */
+a.meal-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+    a.meal-card:hover {
+        border-color: #c87555;
+    }
 
 /* =========================================
    MAALTIJD TOEVOEGEN
