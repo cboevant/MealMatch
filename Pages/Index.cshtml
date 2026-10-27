@@ -64,10 +64,10 @@
                 }
                 else
                 {
-                    <button type="button" class="add-meal">
+                    <a asp-page="/Recepten" asp-route-PlanDatum="@dag.ToString("yyyy-MM-dd")" class="add-meal">
                         <span class="plus">+</span>
                         <span>Maaltijd<br>toevoegen</span>
-                    </button>
+                    </a>
                 }
 
             </div>

@@ -150,6 +150,14 @@ a.meal-card {
         border-color: #c87555;
         color: #c87555;
     }
+    a.add-meal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    }
+
 
 .plus {
     font-size: 26px;
