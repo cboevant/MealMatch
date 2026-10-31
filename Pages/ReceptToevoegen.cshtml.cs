@@ -58,6 +58,16 @@ namespace MealMatch.Pages
             {
                 ModelState.AddModelError("Ingredienten", "Voeg minimaal één ingrediënt toe.");
             }
+
+            // Spaties voor, na en tussen de naam weghalen
+            // Spaties voor, na en tussen de naam weghalen
+            Recept.Naam = _receptService.MaakNaamSchoon(Recept.Naam);
+
+            // Controle: bestaat er al een recept met deze naam?
+            if (_receptService.NaamBestaatAl(Recept.Naam, Recept.Id))
+            {
+                ModelState.AddModelError("Recept.Naam", "Er bestaat al een recept met deze naam.");
+            }
             if (Foto != null)
             {
                 string extensie = Path.GetExtension(Foto.FileName).ToLower();

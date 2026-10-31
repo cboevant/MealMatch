@@ -26,6 +26,19 @@ namespace MealMatch.Model_Services
             _context.Recepten.Add(recept);
             _context.SaveChanges();
         }
+        public string MaakNaamSchoon(string naam)
+        {
+            string[] woorden = naam.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+
+            return string.Join(" ", woorden);
+        }
+        public bool NaamBestaatAl(string naam, int eigenId)
+        {
+            string schoneNaam = MaakNaamSchoon(naam);
+
+            return _context.Recepten
+                .Any(r => r.Naam == schoneNaam && r.Id != eigenId);
+        }
 
         public List<Recept> HaalReceptenOp()
         {
