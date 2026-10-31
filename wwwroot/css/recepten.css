@@ -7,6 +7,12 @@
     max-width: 1000px;
     width: 100%;
 }
+/* Alleen het receptenoverzicht: over de hele breedte, navigatiebalk op hoogte van het logo */
+.recepten-overzicht {
+    grid-column: 2 / -1;
+    max-width: none;
+    padding-top: 26px;
+}
 
 .recepten-header {
     display: flex;
@@ -31,12 +37,31 @@
    FILTER
    ========================= */
 
-.filter-balk {
+.recepten-toolbar {
     display: flex;
+    justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
     gap: 12px;
     margin-bottom: 24px;
 }
+
+.filter-balk {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.zoek-melding {
+    color: #8d8178;
+    margin-bottom: 16px;
+}
+
+    .zoek-melding a {
+        margin-left: 12px;
+        color: #c98f7d;
+    }
 
     .filter-balk label {
         color: #8d8178;
@@ -46,12 +71,16 @@
     .filter-balk select {
         font-family: inherit;
         font-size: 14px;
-        padding: 11px 12px;
+        padding: 7px 10px;
         border: 1px solid #e6d9d0;
         border-radius: 8px;
         background-color: #fffdfb;
         color: #3f3a35;
     }
+/* Filterknop in de filterbalk: kleiner dan de gewone knop */
+.filter-balk .btn-toevoegen {
+    padding: 7px 14px;
+}
 /* =========================
    KIES-MODUS (recept kiezen voor de weekplanning)
    ========================= */
@@ -84,7 +113,7 @@
 
 .recepten-lijst {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, minmax(0, 270px));
     gap: 18px;
 }
 
@@ -92,24 +121,27 @@
     background-color: #fffdfb;
     border: 1px solid #e7ddd6;
     border-radius: 12px;
-    padding: 22px;
-    min-height: 170px;
+    padding: 18px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     box-shadow: 0 2px 8px rgba(80, 60, 50, 0.04);
 }
 
+    /* De knop onderaan duwen, zodat de knoppen in een rij op gelijke hoogte staan */
+    .recept-kaart form {
+        margin-top: auto;
+    }
+
     .recept-kaart h2 {
         margin: 0;
-        font-size: 22px;
+        font-size: 19px;
         font-weight: 500;
     }
 
     .recept-kaart p {
         color: #8d8178;
         font-size: 14px;
-        margin: 10px 0 18px 0;
+        margin: 6px 0 10px 0;
     }
 
     .recept-kaart button {
@@ -144,13 +176,13 @@
 .weergave-knoppen {
     display: flex;
     gap: 8px;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
 }
 
 .weergave-knop {
     border: 1px solid #e6d9d0;
     border-radius: 8px;
-    padding: 8px 14px;
+    padding: 7px 12px;
     background-color: #fffdfb;
     color: #8d8178;
     font-size: 14px;
@@ -265,4 +297,112 @@
     .recepten-lijst {
         grid-template-columns: 1fr;
     }
+}
+
+/* =========================
+   NAVIGATIEBALK (alleen receptenpagina)
+   ========================= */
+
+.topbalk {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.topnav {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    font-family: Arial, sans-serif;
+    font-size: 17px;
+}
+
+.topnav-link {
+    color: #3f3a35;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 0;
+}
+
+    .topnav-link:hover {
+        color: #c98f7d;
+    }
+
+    .topnav-link .bi-house {
+        font-size: 22px;
+    }
+
+/* Dropdown onder Recepten: verschijnt als de muis erover hangt */
+.topnav-dropdown {
+    position: relative;
+}
+
+.recepten-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 200px;
+    background-color: #fffdfb;
+    border: 1px solid #e6d9d0;
+    border-radius: 10px;
+    padding: 8px 0;
+    z-index: 10;
+}
+
+.topnav-dropdown:hover .recepten-dropdown,
+.topnav-dropdown:focus-within .recepten-dropdown {
+    display: block;
+}
+
+.recepten-dropdown a {
+    display: block;
+    padding: 8px 16px;
+    color: #3f3a35;
+    text-decoration: none;
+}
+
+    .recepten-dropdown a:hover {
+        background-color: #f3e9e2;
+    }
+
+/* Vergrootglas */
+.topnav-zoekknop {
+    background: none;
+    border: 0;
+    font-size: 20px;
+    color: #3f3a35;
+    cursor: pointer;
+}
+
+    .topnav-zoekknop:hover {
+        color: #c98f7d;
+    }
+
+/* Zoekveld dat verschijnt na klikken op het vergrootglas */
+.topnav-zoekveld {
+    display: flex;
+    gap: 8px;
+}
+
+    .topnav-zoekveld input {
+        font-family: inherit;
+        font-size: 14px;
+        padding: 9px 12px;
+        border: 1px solid #e6d9d0;
+        border-radius: 8px;
+        background-color: #fffdfb;
+        min-width: 240px;
+    }
+
+/* Wel voor schermlezers, niet zichtbaar op het scherm */
+.visueel-verborgen {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
 }

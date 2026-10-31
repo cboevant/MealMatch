@@ -4,20 +4,45 @@
     ViewData["Title"] = "Recepten";
 }
 
-<div class="recepten-pagina">
+<div class="recepten-pagina recepten-overzicht">
 
-    @* ===== HEADER: titel en knop om een recept toe te voegen ===== *@
-    <div class="recepten-header">
-        <div>
-            <p class="kleine-titel">Mijn recepten</p>
-            <h1>Recepten</h1>
-            <p>Bekijk en beheer je recepten.</p>
-        </div>
+    @* ===== NAVIGATIEBALK: alleen op de receptenpagina ===== *@
+    <header class="topbalk">
 
-        <a href="/ReceptToevoegen" class="btn-toevoegen">
-            + Recept toevoegen
-        </a>
-    </div>
+        <nav class="topnav">
+
+            <a href="/" class="topnav-link" aria-label="Homepage">
+                <i class="bi bi-house"></i>
+            </a>
+
+            <div class="topnav-dropdown">
+                <a href="/Recepten" class="topnav-link">
+                    Recepten <i class="bi bi-chevron-down"></i>
+                </a>
+                <div class="recepten-dropdown">
+                    <a href="/Recepten">Alle recepten</a>
+                    <a href="/ReceptToevoegen">Recept toevoegen</a>
+                </div>
+            </div>
+
+            <a href="/Recepten?Weekmenu=open" class="topnav-link">Weekmenu</a>
+
+            <button type="button" id="zoekknop" class="topnav-zoekknop" aria-label="Zoeken">
+                <i class="bi bi-search"></i>
+            </button>
+
+        </nav>
+
+        <form method="get" action="/Recepten" id="zoekveld" class="topnav-zoekveld" hidden>
+            <label for="nav-zoektekst" class="visueel-verborgen">Zoek op receptnaam</label>
+            <input type="text" id="nav-zoektekst" name="Zoektekst" value="@Model.Zoektekst" placeholder="Zoek op receptnaam">
+            <button type="submit" class="btn-toevoegen">Zoeken</button>
+        </form>
+
+    </header>
+
+    @* Titel alleen voor schermlezers, niet zichtbaar op het scherm *@
+    <h1 class="visueel-verborgen">Recepten</h1>
 
     @* ===== KIES-MELDING: alleen zichtbaar als je via het plusje op de homepage komt ===== *@
     @if (Model.PlanDatum != null)
@@ -29,45 +54,58 @@
         </div>
     }
 
-    @* ===== FILTER: recepten filteren op bereidingstijd ===== *@
-    @* De hidden velden zorgen dat Weergave en PlanDatum niet kwijtraken bij het filteren *@
-    <form method="get" class="filter-balk">
-        <label for="Zoektekst">Zoeken</label>
-        <input type="text" id="Zoektekst" name="Zoektekst" value="@Model.Zoektekst" placeholder="Zoek op receptnaam">
-        <label asp-for="GekozenTijd">Bereidingstijd</label>
-        <select asp-for="GekozenTijd">
-            <option value="">Alle recepten</option>
-            @foreach (int tijd in Model.Bereidingstijden)
-            {
-                <option value="@tijd">@tijd minuten</option>
-            }
-        </select>
-        <input type="hidden" name="Weergave" value="@Model.Weergave">
-        <input type="hidden" name="Sortering" value="@Model.Sortering">
-        <input type="hidden" name="PlanDatum" value="@Model.PlanDatum?.ToString("yyyy-MM-dd")">
-        <button type="submit" class="btn-toevoegen">Filter</button>
-    </form>
+    @* ===== ZOEK-MELDING: laat zien waarop je gezocht hebt ===== *@
+    @if (!string.IsNullOrWhiteSpace(Model.Zoektekst))
+    {
+        <p class="zoek-melding">
+            Zoekresultaten voor "<strong>@Model.Zoektekst</strong>"
+            <a asp-page="/Recepten" asp-route-Weergave="@Model.Weergave">Wis zoekopdracht</a>
+        </p>
+    }
 
-    @* ===== WEERGAVE-KNOPPEN: wisselen tussen kaartjes en lijst ===== *@
-    <div class="weergave-knoppen">
-        <a asp-page="/Recepten"
-           asp-route-Weergave="kaartjes"
-           asp-route-GekozenTijd="@Model.GekozenTijd"
-           asp-route-Zoektekst="@Model.Zoektekst"
-           asp-route-Sortering="@Model.Sortering"
-           asp-route-PlanDatum="@Model.PlanDatum?.ToString("yyyy-MM-dd")"
-           class="weergave-knop @(Model.Weergave != "lijst" ? "actief" : "")">
-            <i class="bi bi-grid"></i> Kaartjes
-        </a>
-        <a asp-page="/Recepten"
-           asp-route-Weergave="lijst"
-           asp-route-GekozenTijd="@Model.GekozenTijd"
-           asp-route-Zoektekst="@Model.Zoektekst"
-           asp-route-Sortering="@Model.Sortering"
-           asp-route-PlanDatum="@Model.PlanDatum?.ToString("yyyy-MM-dd")"
-           class="weergave-knop @(Model.Weergave == "lijst" ? "actief" : "")">
-            <i class="bi bi-list-ul"></i> Lijst
-        </a>
+    @* ===== TOOLBAR: filter en weergave-knoppen op één regel ===== *@
+    <div class="recepten-toolbar">
+
+        @* FILTER: recepten filteren op bereidingstijd *@
+        @* De hidden velden zorgen dat Weergave, Sortering, Zoektekst en PlanDatum niet kwijtraken bij het filteren *@
+        <form method="get" class="filter-balk">
+            <label asp-for="GekozenTijd" class="visueel-verborgen">Bereidingstijd</label>
+            <select asp-for="GekozenTijd">
+                <option value="">Alle bereidingstijden</option>
+                @foreach (int tijd in Model.Bereidingstijden)
+                {
+                    <option value="@tijd">@tijd minuten</option>
+                }
+            </select>
+            <input type="hidden" name="Weergave" value="@Model.Weergave">
+            <input type="hidden" name="Sortering" value="@Model.Sortering">
+            <input type="hidden" name="Zoektekst" value="@Model.Zoektekst">
+            <input type="hidden" name="PlanDatum" value="@Model.PlanDatum?.ToString("yyyy-MM-dd")">
+            <button type="submit" class="btn-toevoegen">Filter</button>
+        </form>
+
+        @* WEERGAVE-KNOPPEN: wisselen tussen kaartjes en lijst *@
+        <div class="weergave-knoppen">
+            <a asp-page="/Recepten"
+               asp-route-Weergave="kaartjes"
+               asp-route-GekozenTijd="@Model.GekozenTijd"
+               asp-route-Zoektekst="@Model.Zoektekst"
+               asp-route-Sortering="@Model.Sortering"
+               asp-route-PlanDatum="@Model.PlanDatum?.ToString("yyyy-MM-dd")"
+               class="weergave-knop @(Model.Weergave != "lijst" ? "actief" : "")">
+                <i class="bi bi-grid"></i> Kaartjes
+            </a>
+            <a asp-page="/Recepten"
+               asp-route-Weergave="lijst"
+               asp-route-GekozenTijd="@Model.GekozenTijd"
+               asp-route-Zoektekst="@Model.Zoektekst"
+               asp-route-Sortering="@Model.Sortering"
+               asp-route-PlanDatum="@Model.PlanDatum?.ToString("yyyy-MM-dd")"
+               class="weergave-knop @(Model.Weergave == "lijst" ? "actief" : "")">
+                <i class="bi bi-list-ul"></i> Lijst
+            </a>
+        </div>
+
     </div>
 
     @* ===== GEEN RECEPTEN: melding als de lijst leeg is ===== *@
@@ -153,7 +191,7 @@
                         <h2>@recept.Naam</h2>
                     </a>
                     <p>@recept.BereidingstijdMinuten min</p>
-                    <p>Voor @recept.Personen personen</p>
+                    <p>Voor @recept.Personen @(recept.Personen == 1 ? "persoon" : "personen")</p>
 
                     @* Kies-modus: knop om dit recept in te plannen *@
                     @if (Model.PlanDatum != null)
@@ -182,3 +220,19 @@
     }
 
 </div>
+
+@section Scripts {
+    <script>
+        // Vergrootglas: zoekveld tonen of verbergen
+        const zoekknop = document.getElementById("zoekknop");
+        const zoekveld = document.getElementById("zoekveld");
+
+        zoekknop.addEventListener("click", function () {
+            zoekveld.hidden = !zoekveld.hidden;
+
+            if (!zoekveld.hidden) {
+                document.getElementById("nav-zoektekst").focus();
+            }
+        });
+    </script>
+}
