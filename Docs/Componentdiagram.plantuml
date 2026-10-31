@@ -1,0 +1,38 @@
+@startuml
+title Componentdiagram MealMatch
+
+' Lijn met "-"   = dit onderdeel BIEDT de interface aan (bolletje)
+' Lijn met "..>" = dit onderdeel GEBRUIKT de interface (kommetje)
+
+[Browser\n(client-side)] as Browser
+
+node "ASP.NET Core Razor Pages" {
+  component "Pages\n(Index, Recepten,\nReceptDetails, ReceptToevoegen)" as Pages
+  component "Model_Services\n(ReceptService, PlanningService,\nFotoService)" as Services
+  component "Data\n(MealMatchDbContext)" as Data
+  component "Models\n(Recept, Ingredient,\nReceptIngredient, Planning)" as Models
+}
+
+database "SQL Server\n(LocalDB: MealMatchDb)" as DB
+
+interface "HTTP" as HTTP
+interface "Service-methodes" as IService
+interface "DbSet's" as IData
+interface "SQL" as ISql
+
+Pages - HTTP
+Browser ..> HTTP
+
+Services - IService
+Pages ..> IService
+
+Data - IData
+Services ..> IData
+
+DB - ISql
+Data ..> ISql
+
+Pages ..> Models
+Services ..> Models
+Data ..> Models
+@enduml
