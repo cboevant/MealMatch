@@ -32,6 +32,8 @@
     @* ===== FILTER: recepten filteren op bereidingstijd ===== *@
     @* De hidden velden zorgen dat Weergave en PlanDatum niet kwijtraken bij het filteren *@
     <form method="get" class="filter-balk">
+        <label for="Zoektekst">Zoeken</label>
+        <input type="text" id="Zoektekst" name="Zoektekst" value="@Model.Zoektekst" placeholder="Zoek op receptnaam">
         <label asp-for="GekozenTijd">Bereidingstijd</label>
         <select asp-for="GekozenTijd">
             <option value="">Alle recepten</option>
@@ -50,6 +52,7 @@
         <a asp-page="/Recepten"
            asp-route-Weergave="kaartjes"
            asp-route-GekozenTijd="@Model.GekozenTijd"
+           asp-route-Zoektekst="@Model.Zoektekst"
            asp-route-PlanDatum="@Model.PlanDatum?.ToString("yyyy-MM-dd")"
            class="weergave-knop @(Model.Weergave != "lijst" ? "actief" : "")">
             <i class="bi bi-grid"></i> Kaartjes
@@ -57,6 +60,7 @@
         <a asp-page="/Recepten"
            asp-route-Weergave="lijst"
            asp-route-GekozenTijd="@Model.GekozenTijd"
+           asp-route-Zoektekst="@Model.Zoektekst"
            asp-route-PlanDatum="@Model.PlanDatum?.ToString("yyyy-MM-dd")"
            class="weergave-knop @(Model.Weergave == "lijst" ? "actief" : "")">
             <i class="bi bi-list-ul"></i> Lijst

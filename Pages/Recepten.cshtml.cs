@@ -19,6 +19,10 @@ namespace MealMatch.Pages
 
         [BindProperty(SupportsGet = true)]
         public int? GekozenTijd { get; set; }
+
+        [BindProperty(SupportsGet = true)]
+        public string? Zoektekst { get; set; }
+
         [BindProperty(SupportsGet = true)]
         public string Weergave { get; set; } = "kaartjes";
         [BindProperty(SupportsGet = true)]
@@ -28,15 +32,16 @@ namespace MealMatch.Pages
         public void OnGet()
         {
             Bereidingstijden = _receptService.HaalBereidingstijdenOp();
+            Recepten = _receptService.HaalReceptenOp();
 
-            if (GekozenTijd == null)
+            ReceptFilter filter = new ReceptFilter();
+
+            if (GekozenTijd != null)
             {
-                Recepten = _receptService.HaalReceptenOp();
+                Recepten = filter.FilterOpBereidingstijd(Recepten, GekozenTijd.Value);
             }
-            else
-            {
-                Recepten = _receptService.FilterOpBereidingstijd(GekozenTijd.Value);
-            }
+
+            Recepten = filter.ZoekOpNaam(Recepten, Zoektekst);
         }
         public IActionResult OnPostVerwijder(int id)
         {
