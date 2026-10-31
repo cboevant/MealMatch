@@ -60,7 +60,6 @@ namespace MealMatch.Pages
             }
 
             // Spaties voor, na en tussen de naam weghalen
-            // Spaties voor, na en tussen de naam weghalen
             Recept.Naam = _receptService.MaakNaamSchoon(Recept.Naam);
 
             // Controle: bestaat er al een recept met deze naam?
