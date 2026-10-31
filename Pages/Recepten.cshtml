@@ -68,20 +68,54 @@
 
         @* FILTER: recepten filteren op bereidingstijd *@
         @* De hidden velden zorgen dat Weergave, Sortering, Zoektekst en PlanDatum niet kwijtraken bij het filteren *@
+        @{
+            // Tellen hoeveel filters aan staan, voor op de knop
+            int aantalActief = 0;
+            if (Model.GekozenTijd != null) { aantalActief++; }
+            if (Model.GekozenPersonen != null) { aantalActief++; }
+        }
+
         <form method="get" class="filter-balk">
-            <label asp-for="GekozenTijd" class="visueel-verborgen">Bereidingstijd</label>
-            <select asp-for="GekozenTijd">
-                <option value="">Alle bereidingstijden</option>
-                @foreach (int tijd in Model.Bereidingstijden)
-                {
-                    <option value="@tijd">@tijd minuten</option>
-                }
-            </select>
-            <input type="hidden" name="Weergave" value="@Model.Weergave">
-            <input type="hidden" name="Sortering" value="@Model.Sortering">
-            <input type="hidden" name="Zoektekst" value="@Model.Zoektekst">
-            <input type="hidden" name="PlanDatum" value="@Model.PlanDatum?.ToString("yyyy-MM-dd")">
-            <button type="submit" class="btn-toevoegen">Filter</button>
+
+            <details class="filter-menu">
+                <summary>
+                    <i class="bi bi-sliders"></i>
+                    Filters @(aantalActief > 0 ? "(" + aantalActief + ")" : "")
+                </summary>
+
+                <div class="filter-paneel">
+                    <label asp-for="GekozenTijd">Bereidingstijd</label>
+                    <select asp-for="GekozenTijd">
+                        <option value="">Alle bereidingstijden</option>
+                        @foreach (int tijd in Model.Bereidingstijden)
+                        {
+                            <option value="@tijd">@tijd minuten</option>
+                        }
+                    </select>
+
+                    <label asp-for="GekozenPersonen">Aantal personen</label>
+                    <select asp-for="GekozenPersonen">
+                        <option value="">Alle aantallen</option>
+                        @foreach (int aantal in Model.AantallenPersonen)
+                        {
+                            <option value="@aantal">@aantal @(aantal == 1 ? "persoon" : "personen")</option>
+                        }
+                    </select>
+
+                    <input type="hidden" name="Weergave" value="@Model.Weergave">
+                    <input type="hidden" name="Sortering" value="@Model.Sortering">
+                    <input type="hidden" name="Zoektekst" value="@Model.Zoektekst">
+                    <input type="hidden" name="PlanDatum" value="@Model.PlanDatum?.ToString("yyyy-MM-dd")">
+
+                    <button type="submit" class="btn-toevoegen">Toepassen</button>
+                </div>
+            </details>
+
+            @if (aantalActief > 0 || !string.IsNullOrWhiteSpace(Model.Zoektekst))
+            {
+                <a asp-page="/Recepten" asp-route-Weergave="@Model.Weergave" class="filters-wissen">Filters wissen</a>
+            }
+
         </form>
 
         @* WEERGAVE-KNOPPEN: wisselen tussen kaartjes en lijst *@
@@ -89,6 +123,7 @@
             <a asp-page="/Recepten"
                asp-route-Weergave="kaartjes"
                asp-route-GekozenTijd="@Model.GekozenTijd"
+               asp-route-GekozenPersonen="@Model.GekozenPersonen"
                asp-route-Zoektekst="@Model.Zoektekst"
                asp-route-Sortering="@Model.Sortering"
                asp-route-PlanDatum="@Model.PlanDatum?.ToString("yyyy-MM-dd")"
@@ -98,6 +133,7 @@
             <a asp-page="/Recepten"
                asp-route-Weergave="lijst"
                asp-route-GekozenTijd="@Model.GekozenTijd"
+               asp-route-GekozenPersonen="@Model.GekozenPersonen"
                asp-route-Zoektekst="@Model.Zoektekst"
                asp-route-Sortering="@Model.Sortering"
                asp-route-PlanDatum="@Model.PlanDatum?.ToString("yyyy-MM-dd")"
@@ -124,6 +160,7 @@
                         <a asp-page="/Recepten"
                            asp-route-Weergave="lijst"
                            asp-route-GekozenTijd="@Model.GekozenTijd"
+                           asp-route-GekozenPersonen="@Model.GekozenPersonen"
                            asp-route-Zoektekst="@Model.Zoektekst"
                            asp-route-PlanDatum="@Model.PlanDatum?.ToString("yyyy-MM-dd")"
                            asp-route-Sortering="@(Model.Sortering == "za" ? "az" : "za")">

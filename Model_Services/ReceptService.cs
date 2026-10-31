@@ -56,6 +56,14 @@ namespace MealMatch.Model_Services
                 .OrderBy(tijd => tijd)
                 .ToList();
         }
+        public List<int> HaalAantallenPersonenOp()
+        {
+            return _context.Recepten
+                .Select(r => r.Personen)
+                .Distinct()
+                .OrderBy(aantal => aantal)
+                .ToList();
+        }
         public void VerwijderRecept(int id)
         {
             Recept? recept = _context.Recepten.Find(id);

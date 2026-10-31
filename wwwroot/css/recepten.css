@@ -406,3 +406,63 @@
     clip: rect(0 0 0 0);
     white-space: nowrap;
 }
+
+.filters-wissen {
+    color: #c98f7d;
+    font-size: 14px;
+}
+
+/* =========================
+   FILTERMENU (één knop met een paneel)
+   ========================= */
+
+.filter-menu {
+    position: relative;
+}
+
+    .filter-menu summary {
+        list-style: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        cursor: pointer;
+        font-size: 14px;
+        padding: 7px 12px;
+        border: 1px solid #e6d9d0;
+        border-radius: 8px;
+        background-color: #fffdfb;
+        color: #3f3a35;
+    }
+
+        /* Het standaard pijltje van details verbergen */
+        .filter-menu summary::-webkit-details-marker {
+            display: none;
+        }
+
+    .filter-menu[open] summary {
+        background-color: #f4e8df;
+    }
+
+.filter-paneel {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    z-index: 10;
+    display: grid;
+    gap: 8px;
+    min-width: 240px;
+    padding: 16px;
+    background-color: #fffdfb;
+    border: 1px solid #e6d9d0;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(80, 60, 50, 0.08);
+}
+
+    .filter-paneel label {
+        font-size: 13px;
+        color: #8d8178;
+    }
+
+    .filter-paneel .btn-toevoegen {
+        margin-top: 6px;
+    }

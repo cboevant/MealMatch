@@ -20,6 +20,21 @@ namespace MealMatch.Model_Services
             return resultaat;
         }
 
+        public List<Recept> FilterOpPersonen(List<Recept> recepten, int aantal)
+        {
+            List<Recept> resultaat = new List<Recept>();
+
+            foreach (Recept recept in recepten)
+            {
+                if (recept.Personen == aantal)
+                {
+                    resultaat.Add(recept);
+                }
+            }
+
+            return resultaat;
+        }
+
         public List<Recept> ZoekOpNaamOfIngredient(List<Recept> recepten, string? zoektekst)
         {
             // Geen zoektekst: alle recepten teruggeven
