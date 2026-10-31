@@ -40,5 +40,14 @@ namespace MealMatch.Model_Services
 
             return resultaat;
         }
+        public List<Recept> SorteerOpNaam(List<Recept> recepten, string sortering)
+        {
+            if (sortering == "za")
+            {
+                return recepten.OrderByDescending(r => r.Naam).ToList();
+            }
+
+            return recepten.OrderBy(r => r.Naam).ToList();
+        }
     }
 }

@@ -24,6 +24,9 @@ namespace MealMatch.Pages
         public string? Zoektekst { get; set; }
 
         [BindProperty(SupportsGet = true)]
+        public string Sortering { get; set; } = "az";
+
+        [BindProperty(SupportsGet = true)]
         public string Weergave { get; set; } = "kaartjes";
         [BindProperty(SupportsGet = true)]
         public DateTime? PlanDatum { get; set; }
@@ -42,6 +45,8 @@ namespace MealMatch.Pages
             }
 
             Recepten = filter.ZoekOpNaam(Recepten, Zoektekst);
+
+            Recepten = filter.SorteerOpNaam(Recepten, Sortering);
         }
         public IActionResult OnPostVerwijder(int id)
         {

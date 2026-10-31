@@ -43,6 +43,7 @@
             }
         </select>
         <input type="hidden" name="Weergave" value="@Model.Weergave">
+        <input type="hidden" name="Sortering" value="@Model.Sortering">
         <input type="hidden" name="PlanDatum" value="@Model.PlanDatum?.ToString("yyyy-MM-dd")">
         <button type="submit" class="btn-toevoegen">Filter</button>
     </form>
@@ -53,6 +54,7 @@
            asp-route-Weergave="kaartjes"
            asp-route-GekozenTijd="@Model.GekozenTijd"
            asp-route-Zoektekst="@Model.Zoektekst"
+           asp-route-Sortering="@Model.Sortering"
            asp-route-PlanDatum="@Model.PlanDatum?.ToString("yyyy-MM-dd")"
            class="weergave-knop @(Model.Weergave != "lijst" ? "actief" : "")">
             <i class="bi bi-grid"></i> Kaartjes
@@ -61,6 +63,7 @@
            asp-route-Weergave="lijst"
            asp-route-GekozenTijd="@Model.GekozenTijd"
            asp-route-Zoektekst="@Model.Zoektekst"
+           asp-route-Sortering="@Model.Sortering"
            asp-route-PlanDatum="@Model.PlanDatum?.ToString("yyyy-MM-dd")"
            class="weergave-knop @(Model.Weergave == "lijst" ? "actief" : "")">
             <i class="bi bi-list-ul"></i> Lijst
@@ -79,7 +82,16 @@
         <table class="recepten-tabel">
             <thead>
                 <tr>
-                    <th>Naam</th>
+                    <th>
+                        <a asp-page="/Recepten"
+                           asp-route-Weergave="lijst"
+                           asp-route-GekozenTijd="@Model.GekozenTijd"
+                           asp-route-Zoektekst="@Model.Zoektekst"
+                           asp-route-PlanDatum="@Model.PlanDatum?.ToString("yyyy-MM-dd")"
+                           asp-route-Sortering="@(Model.Sortering == "za" ? "az" : "za")">
+                            Naam (@(Model.Sortering == "za" ? "Z-A" : "A-Z"))
+                        </a>
+                    </th>
                     <th>Bereidingstijd</th>
                     <th>Personen</th>
                     <th></th>

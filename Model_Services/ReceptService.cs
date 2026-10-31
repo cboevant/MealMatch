@@ -47,14 +47,6 @@ namespace MealMatch.Model_Services
                     .ThenInclude(ri => ri.Ingredient)
                 .ToList();
         }
-        public List<Recept> FilterOpBereidingstijd(int minuten)
-        {
-            return _context.Recepten
-                .Where(r => r.BereidingstijdMinuten == minuten)
-                .Include(r => r.ReceptIngredienten)
-                    .ThenInclude(ri => ri.Ingredient)
-                .ToList();
-        }
 
         public List<int> HaalBereidingstijdenOp()
         {
