@@ -21,6 +21,9 @@ namespace MealMatch.Pages
         public int? GekozenTijd { get; set; }
 
         [BindProperty(SupportsGet = true)]
+        public int? GekozenPersonen { get; set; }
+
+        [BindProperty(SupportsGet = true)]
         public string? Zoektekst { get; set; }
 
         [BindProperty(SupportsGet = true)]
@@ -31,10 +34,12 @@ namespace MealMatch.Pages
         [BindProperty(SupportsGet = true)]
         public DateTime? PlanDatum { get; set; }
         public List<int> Bereidingstijden { get; set; } = new();
+        public List<int> AantallenPersonen { get; set; } = new();
 
         public void OnGet()
         {
             Bereidingstijden = _receptService.HaalBereidingstijdenOp();
+            AantallenPersonen = _receptService.HaalAantallenPersonenOp();
             Recepten = _receptService.HaalReceptenOp();
 
             ReceptFilter filter = new ReceptFilter();
@@ -42,6 +47,11 @@ namespace MealMatch.Pages
             if (GekozenTijd != null)
             {
                 Recepten = filter.FilterOpBereidingstijd(Recepten, GekozenTijd.Value);
+            }
+
+            if (GekozenPersonen != null)
+            {
+                Recepten = filter.FilterOpPersonen(Recepten, GekozenPersonen.Value);
             }
 
             Recepten = filter.ZoekOpNaamOfIngredient(Recepten, Zoektekst);
