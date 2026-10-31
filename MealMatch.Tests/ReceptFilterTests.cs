@@ -36,7 +36,7 @@ namespace MealMatch.Tests
             ReceptFilter filter = new ReceptFilter();
 
             // Act
-            List<Recept> resultaat = filter.ZoekOpNaam(recepten, "BOLO");
+            List<Recept> resultaat = filter.ZoekOpNaamOfIngredient(recepten, "BOLO");
 
             // Assert
             Assert.Single(resultaat);

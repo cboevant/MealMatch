@@ -44,7 +44,7 @@ namespace MealMatch.Pages
                 Recepten = filter.FilterOpBereidingstijd(Recepten, GekozenTijd.Value);
             }
 
-            Recepten = filter.ZoekOpNaam(Recepten, Zoektekst);
+            Recepten = filter.ZoekOpNaamOfIngredient(Recepten, Zoektekst);
 
             Recepten = filter.SorteerOpNaam(Recepten, Sortering);
         }

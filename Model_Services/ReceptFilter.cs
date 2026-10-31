@@ -20,7 +20,7 @@ namespace MealMatch.Model_Services
             return resultaat;
         }
 
-        public List<Recept> ZoekOpNaam(List<Recept> recepten, string? zoektekst)
+        public List<Recept> ZoekOpNaamOfIngredient(List<Recept> recepten, string? zoektekst)
         {
             // Geen zoektekst: alle recepten teruggeven
             if (string.IsNullOrWhiteSpace(zoektekst))
@@ -28,17 +28,32 @@ namespace MealMatch.Model_Services
                 return recepten;
             }
 
+            string tekst = zoektekst.Trim();
             List<Recept> resultaat = new List<Recept>();
 
             foreach (Recept recept in recepten)
             {
-                if (recept.Naam.Contains(zoektekst.Trim(), StringComparison.OrdinalIgnoreCase))
+                // Past de naam van het recept of een van de ingrediënten?
+                if (recept.Naam.Contains(tekst, StringComparison.OrdinalIgnoreCase) || BevatIngredient(recept, tekst))
                 {
                     resultaat.Add(recept);
                 }
             }
 
             return resultaat;
+        }
+
+        private bool BevatIngredient(Recept recept, string tekst)
+        {
+            foreach (ReceptIngredient receptIngredient in recept.ReceptIngredienten)
+            {
+                if (receptIngredient.Ingredient.Naam.Contains(tekst, StringComparison.OrdinalIgnoreCase))
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
         public List<Recept> SorteerOpNaam(List<Recept> recepten, string sortering)
         {
