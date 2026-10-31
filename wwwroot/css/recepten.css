@@ -186,6 +186,14 @@
         color: #3f3a35;
         text-decoration: none;
     }
+    /* Sorteerlink in de kop: zelfde kleur als de andere koppen */
+    .recepten-tabel th a {
+        color: inherit;
+    }
+
+        .recepten-tabel th a:hover {
+            text-decoration: underline;
+        }
 
         .recepten-tabel a:hover {
             color: #b75f45;
